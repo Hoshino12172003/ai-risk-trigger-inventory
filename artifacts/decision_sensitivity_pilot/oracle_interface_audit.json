@@ -1,0 +1,36 @@
+{
+  "adapter_allowed": true,
+  "cli": {
+    "generic_stable_cli": false,
+    "reason": "run_e2_policy_local.py is restricted to authorized Renault case identities"
+  },
+  "commit_sha": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "demand_mapping": {
+    "Gamma": "gamma callable argument",
+    "demand_bar": "InventoryInstance.base_demand",
+    "demand_hat": "InventoryInstance.demand_deviation"
+  },
+  "friction": {
+    "already_in_reopt_total": true,
+    "formula": "lambda_r * inventory_cost * (a_plus + a_minus)",
+    "must_not_add_again": true
+  },
+  "keep": {
+    "callable": "evaluate_robust_service_detailed",
+    "fixed_x_supported": true,
+    "module": "robust_inventory_reconfiguration.robust_service",
+    "output_type": "UnifiedServiceResult"
+  },
+  "objective": "first_stage_expenditure + robust_recourse_cost",
+  "reoptimize": {
+    "callable": "solve_prb_benders",
+    "module": "robust_inventory_reconfiguration.product_risk_budget_benders",
+    "output_type": "PRBBendersResult"
+  },
+  "repository": "Hoshino12172003/budget-inventory-benders",
+  "solver_calls": 0,
+  "source_modification_required": false,
+  "status": "PASS",
+  "worktree_clean_after": true,
+  "worktree_clean_before": true
+}

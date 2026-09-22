@@ -1,0 +1,4 @@
+comparison,left_scheme,right_scheme,spearman,left_top_1,right_top_1,left_top_2,right_top_2
+CURRENT_vs_UNIT_COST_BASED,CURRENT,UNIT_COST_BASED,1.0,pichincha-pichincha-context-2-20140106,pichincha-pichincha-context-2-20140106,pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501,pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501
+CURRENT_vs_TRANSPORT_BASED,CURRENT,TRANSPORT_BASED,1.0,pichincha-pichincha-context-2-20140106,pichincha-pichincha-context-2-20140106,pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501,pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501
+UNIT_COST_BASED_vs_TRANSPORT_BASED,UNIT_COST_BASED,TRANSPORT_BASED,1.0,pichincha-pichincha-context-2-20140106,pichincha-pichincha-context-2-20140106,pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501,pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501

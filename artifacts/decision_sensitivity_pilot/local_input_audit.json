@@ -1,0 +1,99 @@
+{
+  "daily_panel": {
+    "key": [
+      "date",
+      "store_nbr",
+      "family"
+    ],
+    "key_unique": true,
+    "pilot_states_available": [
+      "Guayas",
+      "Pichincha"
+    ],
+    "row_count": 3000888
+  },
+  "network_contexts": {
+    "pilot_states_available": [
+      "Guayas",
+      "Pichincha"
+    ],
+    "row_count": 9
+  },
+  "oracle_candidates": {
+    "pilot_states_available": [
+      "Guayas",
+      "Pichincha"
+    ],
+    "row_count": 12
+  },
+  "status": "PASS",
+  "weekly_states": {
+    "future_leakage_detected": false,
+    "key": [
+      "state",
+      "family",
+      "week_start"
+    ],
+    "key_unique": true,
+    "pilot_states_available": [
+      "Guayas",
+      "Pichincha"
+    ],
+    "required_columns_present": true,
+    "rolling_feature_checks": {
+      "sales_change_vs_4w": {
+        "depends_on": "sales_mean_4w",
+        "matches_prior_only_history": true,
+        "non_null_rows_checked": 102353
+      },
+      "sales_mean_13w": {
+        "matches_prior_only_history": true,
+        "non_null_rows_checked": 124608,
+        "shift_periods": 1,
+        "window": 13
+      },
+      "sales_mean_4w": {
+        "matches_prior_only_history": true,
+        "non_null_rows_checked": 126720,
+        "shift_periods": 1,
+        "window": 4
+      },
+      "sales_mean_8w": {
+        "matches_prior_only_history": true,
+        "non_null_rows_checked": 125664,
+        "shift_periods": 1,
+        "window": 8
+      },
+      "sales_std_13w": {
+        "absolute_tolerance": 0.0001,
+        "matches_prior_only_history": true,
+        "non_null_rows_checked": 124608,
+        "shift_periods": 1,
+        "window": 13
+      },
+      "sales_std_4w": {
+        "absolute_tolerance": 0.0001,
+        "matches_prior_only_history": true,
+        "non_null_rows_checked": 126720,
+        "shift_periods": 1,
+        "window": 4
+      },
+      "sales_std_8w": {
+        "absolute_tolerance": 0.0001,
+        "matches_prior_only_history": true,
+        "non_null_rows_checked": 125664,
+        "shift_periods": 1,
+        "window": 8
+      },
+      "sales_z_8w": {
+        "depends_on": [
+          "sales_mean_8w",
+          "sales_std_8w"
+        ],
+        "matches_prior_only_history": true,
+        "non_null_rows_checked": 103612
+      }
+    },
+    "row_count": 127776
+  }
+}

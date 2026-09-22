@@ -1,0 +1,4 @@
+model,observations,features,r2,adjusted_r2,mae,pearson_correlation,spearman_correlation,design_matrix_rank,design_matrix_condition_number
+A_relative_shift,20,relative_demand_shift,0.20844975259170628,0.16447473884680108,442530.2080028139,0.4565629776840278,0.5849624060150376,,
+B_positive_shift,20,positive_demand_shift,0.5757349892789747,0.5521647109055844,245044.6818909904,,,,
+C_demand_plus_structure,20,relative_demand_shift|inventory_to_demand_ratio|capacity_slack_ratio|demand_concentration|incumbent_inventory_concentration|transport_cost_cv|transport_substitutability_proxy|promotion_intensity|holiday_flag,0.7938788639302363,0.608369841467449,210674.79321898738,,,10.0,486.6666857073917

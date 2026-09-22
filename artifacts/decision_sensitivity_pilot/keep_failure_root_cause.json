@@ -1,0 +1,21 @@
+{
+  "state_id": "pichincha-pichincha-context-2-20140106",
+  "failed_stage": "Stage 2 quadratic reporting tie-break",
+  "stage1_status": "OPTIMAL",
+  "stage1_exact_robust_recourse_cost": 404641976678.6842,
+  "original_stage2_status": "SUBOPTIMAL",
+  "rescaled_stage2_status": "SUBOPTIMAL",
+  "classification": "REPORTING_QP_UNRESOLVED",
+  "cost_only_keep_evaluator": "COST_ONLY_KEEP_EVALUATOR_FEASIBLE",
+  "essential_for_decision_value": [
+    "robust recourse cost"
+  ],
+  "reporting_only_under_degeneracy": [
+    "canonical shortage allocation",
+    "minimum fill rate",
+    "worst region identity",
+    "transportation/shortage/service decomposition"
+  ],
+  "solver_dispatch_count": 3,
+  "frozen_checkout_clean_after": true
+}

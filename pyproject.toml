@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "Research skeleton for AI-triggered robust inventory reoptimization"
 requires-python = ">=3.11"
 dependencies = [
+    "matplotlib",
     "numpy",
     "pandas",
     "scikit-learn",

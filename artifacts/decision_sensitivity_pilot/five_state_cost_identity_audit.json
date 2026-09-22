@@ -1,0 +1,65 @@
+{
+  "tolerance": 0.0001,
+  "states": [
+    {
+      "state_id": "pichincha-pichincha-context-2-20140106",
+      "keep_identity_error": 0.0,
+      "keep_identity_pass": true,
+      "reopt_identity_error": 0.0,
+      "reopt_identity_pass": true,
+      "reopt_independent_recourse_error": 0.0,
+      "reopt_independent_recourse_pass": true,
+      "reconfiguration_friction_included_once": true,
+      "decision_value": 404641282330.1858,
+      "cost_dominance_pass": true
+    },
+    {
+      "state_id": "pichincha-pichincha-context-1-20160321",
+      "keep_identity_error": 0.0,
+      "keep_identity_pass": true,
+      "reopt_identity_error": 0.0,
+      "reopt_identity_pass": true,
+      "reopt_independent_recourse_error": 0.0,
+      "reopt_independent_recourse_pass": true,
+      "reconfiguration_friction_included_once": true,
+      "decision_value": 73740.53915637033,
+      "cost_dominance_pass": true
+    },
+    {
+      "state_id": "pichincha-pichincha-context-2-20160502",
+      "keep_identity_error": 0.0,
+      "keep_identity_pass": true,
+      "reopt_identity_error": 0.0,
+      "reopt_identity_pass": true,
+      "reopt_independent_recourse_error": -1.1641532182693481e-10,
+      "reopt_independent_recourse_pass": true,
+      "reconfiguration_friction_included_once": true,
+      "decision_value": 49348.50336504774,
+      "cost_dominance_pass": true
+    },
+    {
+      "state_id": "guayas-guayas-context-2-20170109",
+      "keep_identity_error": 0.0,
+      "keep_identity_pass": true,
+      "reopt_identity_error": 0.0,
+      "reopt_identity_pass": true,
+      "reopt_independent_recourse_error": -5.820766091346741e-11,
+      "reopt_independent_recourse_pass": true,
+      "reconfiguration_friction_included_once": true,
+      "decision_value": 42219.07490218221,
+      "cost_dominance_pass": true
+    },
+    {
+      "state_id": "guayas-guayas-context-2-20170501",
+      "keep_identity_error": 0.0,
+      "keep_identity_pass": true,
+      "reopt_identity_error": 0.0,
+      "reopt_identity_pass": true,
+      "reopt_independent_recourse_error": 5.820766091346741e-11,
+      "reopt_independent_recourse_pass": true,
+      "reconfiguration_friction_included_once": true,
+      "decision_value": 5880999106.448388,
+      "cost_dominance_pass": true
+    }
+  ]
+}
