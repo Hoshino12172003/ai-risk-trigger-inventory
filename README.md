@@ -41,3 +41,22 @@ Requires Python 3.11 or newer.
 python -m pip install -e ".[dev]"
 pytest -q
 ```
+
+## Future methodological architecture
+
+Future static, contextual, and decision-aware methods share one solver-neutral
+pipeline:
+
+```text
+context data
+    -> uncertainty model
+    -> demand_center / demand_deviation
+    -> frozen Paper-2 robust reconfiguration
+    -> decision evaluation
+```
+
+`UncertaintyEstimate` is the common handoff schema. Model-specific training is
+deliberately absent from the current architecture, and the Paper-2 optimizer
+remains an external frozen oracle. Reference notes under
+`docs/reference_implementations/` document methodological influences without
+copying source code or adding their solver and deep-learning dependencies.
