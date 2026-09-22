@@ -1,0 +1,5 @@
+{
+  "tolerance": 0.0001,
+  "states": [],
+  "not_performed_reason": "First KEEP failed before returning a certified cost decomposition: Gurobi status 13 (SUBOPTIMAL) in the frozen reporting tie-break."
+}

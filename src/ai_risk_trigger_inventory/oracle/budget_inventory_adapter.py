@@ -7,6 +7,7 @@ import importlib
 from pathlib import Path
 import subprocess
 import sys
+from time import perf_counter
 from typing import Any, Literal
 
 from .provenance import OptimizationOracleProvenance
@@ -108,10 +109,12 @@ class BudgetInventoryAdapter:
             zeros = [
                 [0.0] * instance.num_products for _ in range(instance.num_depots)
             ]
+            self.solver_calls += 1
+            started = perf_counter()
             service = service_module.evaluate_robust_service_detailed(
                 instance, payload.x0, payload.gamma
             )
-            self.solver_calls += 1
+            runtime = perf_counter() - started
             first_stage = cost_module.first_stage_expenditure_value(
                 instance,
                 payload.y0,
@@ -146,8 +149,17 @@ class BudgetInventoryAdapter:
                 "reconfiguration_cost": 0.0,
                 "x": payload.x0,
                 "y": payload.y0,
+                "transportation_cost": service.worst_recourse_scenario.transportation_cost,
+                "shortage_cost": service.worst_recourse_scenario.shortage_cost,
+                "service_penalty_cost": service.worst_recourse_scenario.service_penalty_cost,
+                "shortage_quantity": service.worst_recourse_scenario.total_shortage,
+                "minimum_fill_rate": service.worst_service_scenario.minimum_fill_rate,
+                "runtime": runtime,
+                "oracle_dispatches": 1,
             }
         else:
+            self.solver_calls += 1
+            started = perf_counter()
             solved = benders_module.solve_prb_benders(
                 instance,
                 payload.x0,
@@ -155,7 +167,7 @@ class BudgetInventoryAdapter:
                 payload.gamma,
                 payload.lambda_r,
             )
-            self.solver_calls += 1
+            core_runtime = perf_counter() - started
             if (
                 solved.status != "OPTIMAL"
                 or not solved.exact_certification_pass
@@ -163,6 +175,15 @@ class BudgetInventoryAdapter:
             ):
                 raise RuntimeError("frozen PRB-Benders result is not exactly certified")
             solution = solved.solution
+            self.solver_calls += 1
+            audit_started = perf_counter()
+            service = service_module.evaluate_robust_service_detailed(
+                instance, solution.x, payload.gamma
+            )
+            audit_runtime = perf_counter() - audit_started
+            recourse_error = service.robust_recourse_cost - solution.robust_recourse_cost
+            if abs(recourse_error) > 1e-4:
+                raise RuntimeError("REOPTIMIZE robust recourse decomposition mismatch")
             result = {
                 "decision_mode": "REOPTIMIZE",
                 "status": solved.status,
@@ -174,6 +195,21 @@ class BudgetInventoryAdapter:
                 "y": solution.y,
                 "a_plus": solution.a_plus,
                 "a_minus": solution.a_minus,
+                "transportation_cost": service.worst_recourse_scenario.transportation_cost,
+                "shortage_cost": service.worst_recourse_scenario.shortage_cost,
+                "service_penalty_cost": service.worst_recourse_scenario.service_penalty_cost,
+                "shortage_quantity": service.worst_recourse_scenario.total_shortage,
+                "minimum_fill_rate": service.worst_service_scenario.minimum_fill_rate,
+                "runtime": core_runtime + audit_runtime,
+                "core_runtime": core_runtime,
+                "decomposition_audit_runtime": audit_runtime,
+                "oracle_reported_runtime": solved.total_runtime,
+                "exact_certification_pass": solved.exact_certification_pass,
+                "global_risk_budget_coupling_pass": solved.global_risk_budget_coupling_pass,
+                "global_risk_budget_coupling_error": solved.global_risk_budget_coupling_error,
+                "master_solve_count": solved.master_solve_count,
+                "recourse_decomposition_error": recourse_error,
+                "oracle_dispatches": 2,
             }
         self._assert_clean_frozen_checkout()
         return result

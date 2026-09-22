@@ -1,33 +1,25 @@
-# Decision-Sensitivity Feasibility Report
+# Decision-Sensitivity Five-State Chain Report
 
-Status: `DRY_RUN_PASS`
+Status: `CHAIN_FAIL`
 
-This is an exploratory feasibility setup, not a formal experiment. The four
-specified cleaned Favorita products were audited as local, gitignored inputs.
-Static inspection found reusable frozen Paper 2 Python callables, but neither
-callable was executed.
+This was an exploratory five-state chain validation, not a formal experiment.
+It used an **ex-post decision-sensitivity diagnostic** definition in which
+`base_demand` is current realized weekly demand. It must not be described as a
+forecast, prospective trigger, real-time predictive policy, or out-of-sample
+AI decision.
 
-- Local input audit: `PASS`
-- Frozen oracle interface audit: `PASS`
-- Five-state construction: `PASS`
-- Solver calls: 0
-- Executed states: 0
-- Empirical classification: not assigned; optimization is not authorized
+The all-state pre-solve consistency gate passed. Execution then stopped on the
+first state exactly as required. Frozen
+`evaluate_robust_service_detailed` reached Gurobi status 13 (`SUBOPTIMAL`) in
+its recourse-reporting tie-break for
+`pichincha-pichincha-context-2-20140106`. The frozen checkout remained clean.
 
-`decision_states.csv` contains five solver-free pre-solve states.
-`oracle_results.csv` remains header-only and contains no oracle outputs.
+- Fully executed states: 0/5
+- KEEP successes: 0/5
+- Exact-certified REOPTIMIZE successes: 0/5
+- Actual frozen solver callable dispatches: 1
+- Batch runtime: 1.315242 seconds
 
-## Required questions
-
-1. Demand magnitude alone: not estimable without real oracle results.
-2. Improvement from structural features: not estimable.
-3. Small-shift/high-value states: not tested.
-4. Large-shift/low-value states: not tested.
-5. Candidate explanatory variables are preregistered, but none is ranked yet.
-6. Cross-state evidence for Pichincha and Guayas: not tested.
-7. Whether to proceed to a formal study: no decision is supported by this
-   blocked feasibility setup.
-
-No `STRONG_STRUCTURAL_SIGNAL`, `PARTIAL_STRUCTURAL_SIGNAL`, or
-`WEAK_OR_NO_STRUCTURAL_SIGNAL` label is assigned because doing so with zero
-executed states would fabricate evidence.
+No KEEP result was returned and no REOPTIMIZE call was made. Therefore no
+decision value, inventory-change result, descriptive counterexample, or
+structural-signal classification exists for this run.
