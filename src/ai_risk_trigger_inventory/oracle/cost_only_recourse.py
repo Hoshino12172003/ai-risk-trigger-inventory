@@ -15,6 +15,10 @@ class CostOnlyRecourseResult:
     joint_block_objective: float
     block_optimum_costs: dict[tuple[int, tuple[int, ...]], float]
     worst_scenario: tuple[tuple[int, int], ...]
+    worst_scenario_transport_cost: float
+    worst_scenario_shortage_cost: float
+    worst_scenario_service_penalty_cost: float
+    decomposition_uniqueness_status: str
     runtime: float
     solver_dispatches: int = 1
 
@@ -77,6 +81,9 @@ def evaluate_cost_only_robust_recourse(
     model.Params.OutputFlag = 0
     apply_formal_solver_profile(model, mixed_integer=False)
     costs: dict[tuple[int, tuple[int, ...]], Any] = {}
+    transportation_costs: dict[tuple[int, tuple[int, ...]], Any] = {}
+    shortage_costs: dict[tuple[int, tuple[int, ...]], Any] = {}
+    service_penalty_costs: dict[tuple[int, tuple[int, ...]], Any] = {}
 
     for product in range(instance.num_products):
         for product_gamma in range(gamma + 1):
@@ -119,18 +126,21 @@ def evaluate_cost_only_robust_recourse(
                     <= (1.0 - instance.service_level[product])
                     * sum(scenario_demand)
                 )
-                costs[key] = (
-                    gp.quicksum(
+                transportation_costs[key] = gp.quicksum(
                         instance.transport_cost[depot][region][product]
                         * q[depot, region]
                         for depot in depots
                         for region in regions
                     )
-                    + gp.quicksum(
+                shortage_costs[key] = gp.quicksum(
                         instance.shortage_penalty[region][product] * u[region]
                         for region in regions
-                    )
-                    + instance.service_penalty[product] * e
+                )
+                service_penalty_costs[key] = instance.service_penalty[product] * e
+                costs[key] = (
+                    transportation_costs[key]
+                    + shortage_costs[key]
+                    + service_penalty_costs[key]
                 )
 
     model.setObjective(gp.quicksum(costs.values()), GRB.MINIMIZE)
@@ -145,11 +155,39 @@ def evaluate_cost_only_robust_recourse(
         block_optima,
         instance.num_products,
     )
+    worst_keys = [
+        (
+            product,
+            tuple(
+                region
+                for region, item in worst_scenario
+                if item == product
+            ),
+        )
+        for product in range(instance.num_products)
+    ]
+    worst_transport = sum(
+        float(transportation_costs[key].getValue()) for key in worst_keys
+    )
+    worst_shortage = sum(
+        float(shortage_costs[key].getValue()) for key in worst_keys
+    )
+    worst_service = sum(
+        float(service_penalty_costs[key].getValue()) for key in worst_keys
+    )
+    if abs(worst_transport + worst_shortage + worst_service - robust_cost) > 1e-4:
+        raise RuntimeError("cost-only recourse component identity mismatch")
     return CostOnlyRecourseResult(
         status="OPTIMAL",
         robust_recourse_cost=robust_cost,
         joint_block_objective=float(model.ObjVal),
         block_optimum_costs=block_optima,
         worst_scenario=worst_scenario,
+        worst_scenario_transport_cost=worst_transport,
+        worst_scenario_shortage_cost=worst_shortage,
+        worst_scenario_service_penalty_cost=worst_service,
+        decomposition_uniqueness_status=(
+            "NOT_ESTABLISHED_MULTIPLE_STAGE1_OPTIMA_POSSIBLE"
+        ),
         runtime=runtime,
     )

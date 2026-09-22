@@ -1,0 +1,269 @@
+{
+  "status": "PASS",
+  "classification": "STRUCTURAL_SIGNAL_ROBUST_TO_CALIBRATION",
+  "formal_calibration_candidate_status": "CANDIDATE_FOR_FORMAL_CALIBRATION",
+  "candidate_schemes": [
+    "UNIT_COST_BASED",
+    "TRANSPORT_BASED"
+  ],
+  "preregistered_constants": {
+    "k_B": 5.0,
+    "k_C": 50.0,
+    "service_dominance_share": 0.8,
+    "significant_ratio_reduction_factor": 100.0,
+    "ordering_stability_min": 0.8,
+    "reasonable_ratio_max": 1000.0
+  },
+  "completed_scheme_states": 15,
+  "solver_dispatch_count": 45,
+  "runtime_seconds": 5.808648900012486,
+  "frozen_checkout_clean_after": true,
+  "payload_equivalence_audit": {
+    "pichincha-pichincha-context-2-20140106": {
+      "byte_equivalent_after_removing_only_service_penalty": true,
+      "service_penalty": {
+        "CURRENT": [
+          2689410.38,
+          2340380.0,
+          2261839.262
+        ],
+        "UNIT_COST_BASED": [
+          70.0,
+          70.0,
+          70.0
+        ],
+        "TRANSPORT_BASED": [
+          64.25,
+          64.25,
+          64.25
+        ]
+      }
+    },
+    "pichincha-pichincha-context-1-20160321": {
+      "byte_equivalent_after_removing_only_service_penalty": true,
+      "service_penalty": {
+        "CURRENT": [
+          3439180.0,
+          3251860.0,
+          3277721.4601999996
+        ],
+        "UNIT_COST_BASED": [
+          67.5,
+          67.5,
+          67.5
+        ],
+        "TRANSPORT_BASED": [
+          62.5,
+          62.5,
+          62.5
+        ]
+      }
+    },
+    "pichincha-pichincha-context-2-20160502": {
+      "byte_equivalent_after_removing_only_service_penalty": true,
+      "service_penalty": {
+        "CURRENT": [
+          3976043.28,
+          2840060.0,
+          2602947.64
+        ],
+        "UNIT_COST_BASED": [
+          70.0,
+          70.0,
+          70.0
+        ],
+        "TRANSPORT_BASED": [
+          64.25,
+          64.25,
+          64.25
+        ]
+      }
+    },
+    "guayas-guayas-context-2-20170109": {
+      "byte_equivalent_after_removing_only_service_penalty": true,
+      "service_penalty": {
+        "CURRENT": [
+          1912701.44,
+          1596400.0,
+          801371.48
+        ],
+        "UNIT_COST_BASED": [
+          80.0,
+          80.0,
+          80.0
+        ],
+        "TRANSPORT_BASED": [
+          69.25,
+          69.25,
+          69.25
+        ]
+      }
+    },
+    "guayas-guayas-context-2-20170501": {
+      "byte_equivalent_after_removing_only_service_penalty": true,
+      "service_penalty": {
+        "CURRENT": [
+          2604478.02,
+          1799640.0,
+          899595.0014000001
+        ],
+        "UNIT_COST_BASED": [
+          80.0,
+          80.0,
+          80.0
+        ],
+        "TRANSPORT_BASED": [
+          69.25,
+          69.25,
+          69.25
+        ]
+      }
+    }
+  },
+  "ratios": {
+    "CURRENT": {
+      "median": 0.9853371223117509,
+      "maximum": 1331309.2271362382
+    },
+    "UNIT_COST_BASED": {
+      "median": 0.9853371223117509,
+      "maximum": 50.795133306235556
+    },
+    "TRANSPORT_BASED": {
+      "median": 0.9853371223117509,
+      "maximum": 47.42713525035651
+    }
+  },
+  "rankings": {
+    "CURRENT": [
+      "pichincha-pichincha-context-2-20140106",
+      "guayas-guayas-context-2-20170501",
+      "pichincha-pichincha-context-1-20160321",
+      "pichincha-pichincha-context-2-20160502",
+      "guayas-guayas-context-2-20170109"
+    ],
+    "UNIT_COST_BASED": [
+      "pichincha-pichincha-context-2-20140106",
+      "guayas-guayas-context-2-20170501",
+      "pichincha-pichincha-context-1-20160321",
+      "pichincha-pichincha-context-2-20160502",
+      "guayas-guayas-context-2-20170109"
+    ],
+    "TRANSPORT_BASED": [
+      "pichincha-pichincha-context-2-20140106",
+      "guayas-guayas-context-2-20170501",
+      "pichincha-pichincha-context-1-20160321",
+      "pichincha-pichincha-context-2-20160502",
+      "guayas-guayas-context-2-20170109"
+    ]
+  },
+  "rank_stability": [
+    {
+      "comparison": "CURRENT_vs_UNIT_COST_BASED",
+      "left_scheme": "CURRENT",
+      "right_scheme": "UNIT_COST_BASED",
+      "spearman": 1.0,
+      "left_top_1": "pichincha-pichincha-context-2-20140106",
+      "right_top_1": "pichincha-pichincha-context-2-20140106",
+      "left_top_2": "pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501",
+      "right_top_2": "pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501"
+    },
+    {
+      "comparison": "CURRENT_vs_TRANSPORT_BASED",
+      "left_scheme": "CURRENT",
+      "right_scheme": "TRANSPORT_BASED",
+      "spearman": 1.0,
+      "left_top_1": "pichincha-pichincha-context-2-20140106",
+      "right_top_1": "pichincha-pichincha-context-2-20140106",
+      "left_top_2": "pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501",
+      "right_top_2": "pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501"
+    },
+    {
+      "comparison": "UNIT_COST_BASED_vs_TRANSPORT_BASED",
+      "left_scheme": "UNIT_COST_BASED",
+      "right_scheme": "TRANSPORT_BASED",
+      "spearman": 1.0,
+      "left_top_1": "pichincha-pichincha-context-2-20140106",
+      "right_top_1": "pichincha-pichincha-context-2-20140106",
+      "left_top_2": "pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501",
+      "right_top_2": "pichincha-pichincha-context-2-20140106|guayas-guayas-context-2-20170501"
+    }
+  ],
+  "inventory_rankings": {
+    "CURRENT": [
+      "pichincha-pichincha-context-2-20140106",
+      "pichincha-pichincha-context-1-20160321",
+      "guayas-guayas-context-2-20170109",
+      "pichincha-pichincha-context-2-20160502",
+      "guayas-guayas-context-2-20170501"
+    ],
+    "UNIT_COST_BASED": [
+      "pichincha-pichincha-context-2-20140106",
+      "pichincha-pichincha-context-1-20160321",
+      "guayas-guayas-context-2-20170109",
+      "pichincha-pichincha-context-2-20160502",
+      "guayas-guayas-context-2-20170501"
+    ],
+    "TRANSPORT_BASED": [
+      "pichincha-pichincha-context-2-20140106",
+      "pichincha-pichincha-context-1-20160321",
+      "guayas-guayas-context-2-20170109",
+      "pichincha-pichincha-context-2-20160502",
+      "guayas-guayas-context-2-20170501"
+    ]
+  },
+  "patterns": {
+    "CURRENT": {
+      "small_shift_large_decision_states": [
+        "guayas-guayas-context-2-20170501"
+      ],
+      "large_shift_small_decision_states": [
+        "guayas-guayas-context-2-20170109"
+      ],
+      "thresholds": {
+        "small_shift_max_abs": 0.1,
+        "large_shift_min_abs": 0.15,
+        "large_decision_rank_max": 2,
+        "small_decision_rank_min": 4
+      }
+    },
+    "UNIT_COST_BASED": {
+      "small_shift_large_decision_states": [
+        "guayas-guayas-context-2-20170501"
+      ],
+      "large_shift_small_decision_states": [
+        "guayas-guayas-context-2-20170109"
+      ],
+      "thresholds": {
+        "small_shift_max_abs": 0.1,
+        "large_shift_min_abs": 0.15,
+        "large_decision_rank_max": 2,
+        "small_decision_rank_min": 4
+      }
+    },
+    "TRANSPORT_BASED": {
+      "small_shift_large_decision_states": [
+        "guayas-guayas-context-2-20170501"
+      ],
+      "large_shift_small_decision_states": [
+        "guayas-guayas-context-2-20170109"
+      ],
+      "thresholds": {
+        "small_shift_max_abs": 0.1,
+        "large_shift_min_abs": 0.15,
+        "large_decision_rank_max": 2,
+        "small_decision_rank_min": 4
+      }
+    }
+  },
+  "current_anomalies_service_dominated": true,
+  "bc_significant_ratio_reduction": true,
+  "ordering_stable": true,
+  "patterns_persist_in_b_and_c": true,
+  "extreme_only_current_states": [
+    "guayas-guayas-context-2-20170501",
+    "pichincha-pichincha-context-2-20140106"
+  ],
+  "decomposition_uniqueness": "NOT_ESTABLISHED_MULTIPLE_STAGE1_OPTIMA_POSSIBLE",
+  "total_recourse_identity_exact_within_tolerance": true
+}
