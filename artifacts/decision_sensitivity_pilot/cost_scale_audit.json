@@ -1,0 +1,64 @@
+{
+  "warning_ratio_threshold": 1000.0,
+  "median_recourse_to_first_stage_ratio": 0.9853371223117509,
+  "max_recourse_to_first_stage_ratio": 1331309.2271362382,
+  "calibration_changed": false,
+  "service_or_shortage_penalty_dominance": "INCONCLUSIVE",
+  "states": [
+    {
+      "state_id": "pichincha-pichincha-context-2-20140106",
+      "first_stage_keep": 303942.8920275,
+      "robust_recourse_keep": 404641976678.6842,
+      "recourse_to_first_stage_ratio": 1331309.2271362382,
+      "max_base_demand": 44496.149000000005,
+      "max_demand_deviation": 36908.15550000001,
+      "max_shortage_penalty": 17.0,
+      "max_service_penalty": 2689410.38,
+      "worst_scenario_recourse_cost": 404641976678.6842
+    },
+    {
+      "state_id": "pichincha-pichincha-context-1-20160321",
+      "first_stage_keep": 640965.1406245,
+      "robust_recourse_keep": 567102.119135,
+      "recourse_to_first_stage_ratio": 0.8847628103183048,
+      "max_base_demand": 67282.53,
+      "max_demand_deviation": 10802.5,
+      "max_shortage_penalty": 15.0,
+      "max_service_penalty": 3439180.0,
+      "worst_scenario_recourse_cost": 567102.119135
+    },
+    {
+      "state_id": "pichincha-pichincha-context-2-20160502",
+      "first_stage_keep": 559066.4515717501,
+      "robust_recourse_keep": 550868.9285727501,
+      "recourse_to_first_stage_ratio": 0.9853371223117509,
+      "max_base_demand": 61276.164000000004,
+      "max_demand_deviation": 9211.0,
+      "max_shortage_penalty": 17.0,
+      "max_service_penalty": 3976043.28,
+      "worst_scenario_recourse_cost": 550868.9285727501
+    },
+    {
+      "state_id": "guayas-guayas-context-2-20170109",
+      "first_stage_keep": 302209.3520695,
+      "robust_recourse_keep": 291666.27745000005,
+      "recourse_to_first_stage_ratio": 0.9651133409760418,
+      "max_base_demand": 27443.0,
+      "max_demand_deviation": 12314.020000000004,
+      "max_shortage_penalty": 17.0,
+      "max_service_penalty": 1912701.44,
+      "worst_scenario_recourse_cost": 291666.27745000005
+    },
+    {
+      "state_id": "guayas-guayas-context-2-20170501",
+      "first_stage_keep": 285641.97632625,
+      "robust_recourse_keep": 5881350269.662726,
+      "recourse_to_first_stage_ratio": 20589.936903899794,
+      "max_base_demand": 32279.375,
+      "max_demand_deviation": 6015.75,
+      "max_shortage_penalty": 17.0,
+      "max_service_penalty": 2604478.02,
+      "worst_scenario_recourse_cost": 5881350269.662726
+    }
+  ]
+}

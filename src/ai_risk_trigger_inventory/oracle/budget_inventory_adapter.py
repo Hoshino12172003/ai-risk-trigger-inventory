@@ -10,6 +10,7 @@ import sys
 from time import perf_counter
 from typing import Any, Literal
 
+from .cost_only_recourse import evaluate_cost_only_robust_recourse
 from .provenance import OptimizationOracleProvenance
 
 
@@ -86,16 +87,13 @@ class BudgetInventoryAdapter:
         instance_module = importlib.import_module(
             "robust_inventory_reconfiguration.instance"
         )
-        service_module = importlib.import_module(
-            "robust_inventory_reconfiguration.robust_service"
-        )
         benders_module = importlib.import_module(
             "robust_inventory_reconfiguration.product_risk_budget_benders"
         )
         cost_module = importlib.import_module(
             "robust_inventory_reconfiguration.reconfiguration_model"
         )
-        return instance_module, service_module, benders_module, cost_module
+        return instance_module, benders_module, cost_module
 
     def evaluate(self, payload: OraclePayload) -> dict[str, Any]:
         """Execute one requested policy; callers must obtain separate authorization."""
@@ -103,18 +101,16 @@ class BudgetInventoryAdapter:
         if payload.decision_mode not in ("KEEP", "REOPTIMIZE"):
             raise ValueError("unsupported oracle decision mode")
         self._assert_clean_frozen_checkout()
-        instance_module, service_module, benders_module, cost_module = self._modules()
+        instance_module, benders_module, cost_module = self._modules()
         instance = instance_module.InventoryInstance.from_dict(payload.instance)
         if payload.decision_mode == "KEEP":
             zeros = [
                 [0.0] * instance.num_products for _ in range(instance.num_depots)
             ]
             self.solver_calls += 1
-            started = perf_counter()
-            service = service_module.evaluate_robust_service_detailed(
+            service = evaluate_cost_only_robust_recourse(
                 instance, payload.x0, payload.gamma
             )
-            runtime = perf_counter() - started
             first_stage = cost_module.first_stage_expenditure_value(
                 instance,
                 payload.y0,
@@ -149,12 +145,10 @@ class BudgetInventoryAdapter:
                 "reconfiguration_cost": 0.0,
                 "x": payload.x0,
                 "y": payload.y0,
-                "transportation_cost": service.worst_recourse_scenario.transportation_cost,
-                "shortage_cost": service.worst_recourse_scenario.shortage_cost,
-                "service_penalty_cost": service.worst_recourse_scenario.service_penalty_cost,
-                "shortage_quantity": service.worst_recourse_scenario.total_shortage,
-                "minimum_fill_rate": service.worst_service_scenario.minimum_fill_rate,
-                "runtime": runtime,
+                "reporting_service_metrics_status": "UNAVAILABLE_REPORTING_TIEBREAK_UNRESOLVED",
+                "runtime": service.runtime,
+                "joint_block_objective": service.joint_block_objective,
+                "worst_scenario": service.worst_scenario,
                 "oracle_dispatches": 1,
             }
         else:
@@ -177,13 +171,13 @@ class BudgetInventoryAdapter:
             solution = solved.solution
             self.solver_calls += 1
             audit_started = perf_counter()
-            service = service_module.evaluate_robust_service_detailed(
+            service = evaluate_cost_only_robust_recourse(
                 instance, solution.x, payload.gamma
             )
             audit_runtime = perf_counter() - audit_started
             recourse_error = service.robust_recourse_cost - solution.robust_recourse_cost
             if abs(recourse_error) > 1e-4:
-                raise RuntimeError("REOPTIMIZE robust recourse decomposition mismatch")
+                raise RuntimeError("REOPTIMIZE_RECOURSE_IDENTITY_FAIL")
             result = {
                 "decision_mode": "REOPTIMIZE",
                 "status": solved.status,
@@ -195,20 +189,17 @@ class BudgetInventoryAdapter:
                 "y": solution.y,
                 "a_plus": solution.a_plus,
                 "a_minus": solution.a_minus,
-                "transportation_cost": service.worst_recourse_scenario.transportation_cost,
-                "shortage_cost": service.worst_recourse_scenario.shortage_cost,
-                "service_penalty_cost": service.worst_recourse_scenario.service_penalty_cost,
-                "shortage_quantity": service.worst_recourse_scenario.total_shortage,
-                "minimum_fill_rate": service.worst_service_scenario.minimum_fill_rate,
+                "reporting_service_metrics_status": "UNAVAILABLE_REPORTING_TIEBREAK_UNRESOLVED",
                 "runtime": core_runtime + audit_runtime,
                 "core_runtime": core_runtime,
-                "decomposition_audit_runtime": audit_runtime,
+                "cost_only_audit_runtime": audit_runtime,
                 "oracle_reported_runtime": solved.total_runtime,
                 "exact_certification_pass": solved.exact_certification_pass,
                 "global_risk_budget_coupling_pass": solved.global_risk_budget_coupling_pass,
                 "global_risk_budget_coupling_error": solved.global_risk_budget_coupling_error,
                 "master_solve_count": solved.master_solve_count,
-                "recourse_decomposition_error": recourse_error,
+                "recourse_identity_error": recourse_error,
+                "cost_only_robust_recourse_audit": service.robust_recourse_cost,
                 "oracle_dispatches": 2,
             }
         self._assert_clean_frozen_checkout()

@@ -97,10 +97,29 @@ def test_cost_audit_detects_dominance_violation() -> None:
         "total_cost": 101.0,
         "first_stage_expenditure": 41.0,
         "robust_recourse_cost": 60.0,
-        "recourse_decomposition_error": 0.0,
+        "recourse_identity_error": 0.0,
     }
 
     assert _cost_audit("state", keep, reoptimize)["cost_dominance_pass"] is False
+
+
+def test_reoptimized_recourse_identity_passes_within_tolerance() -> None:
+    keep = {
+        "total_cost": 125.0,
+        "first_stage_expenditure": 25.0,
+        "robust_recourse_cost": 100.0,
+    }
+    reoptimize = {
+        "total_cost": 100.0,
+        "first_stage_expenditure": 20.0,
+        "robust_recourse_cost": 80.0,
+        "recourse_identity_error": 1e-5,
+    }
+
+    audit = _cost_audit("state", keep, reoptimize)
+
+    assert audit["reopt_independent_recourse_pass"] is True
+    assert audit["reconfiguration_friction_included_once"] is True
 
 
 def test_adapter_verifies_frozen_checkout_using_read_only_git_commands() -> None:

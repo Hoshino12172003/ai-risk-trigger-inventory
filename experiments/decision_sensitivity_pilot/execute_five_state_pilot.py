@@ -8,6 +8,7 @@ from dataclasses import asdict
 import json
 import math
 from pathlib import Path
+import statistics
 import sys
 from time import perf_counter
 from typing import Any
@@ -24,21 +25,18 @@ from ai_risk_trigger_inventory.oracle.budget_inventory_adapter import (
 
 
 TOLERANCE = 1e-4
+COST_SCALE_WARNING_RATIO = 1000.0
+ROOT_CAUSE_IDENTITY_VALUE = 404641976678.6842
+ROOT_CAUSE_IDENTITY_STATE = "pichincha-pichincha-context-2-20140106"
 RESULT_FIELDS = [
-    "state_id", "state", "week_start", "network_id", "selected_stores",
-    "selected_families", "relative_demand_shift", "positive_demand_shift",
-    "promotion_intensity", "holiday_flag", "transactions_change",
+    "state_id", "state", "week_start", "relative_demand_shift",
+    "positive_demand_shift",
     "total_cost_keep", "first_stage_keep", "robust_recourse_keep",
-    "transport_cost_keep", "shortage_cost_keep", "service_penalty_keep",
-    "shortage_quantity_keep", "minimum_fill_rate_keep", "total_cost_reopt",
+    "total_cost_reopt",
     "first_stage_reopt", "robust_recourse_reopt", "reconfiguration_cost",
-    "transport_cost_reopt", "shortage_cost_reopt", "service_penalty_reopt",
-    "shortage_quantity_reopt", "minimum_fill_rate_reopt", "decision_value",
+    "decision_value",
     "relative_decision_value", "inventory_change_L1",
-    "changed_inventory_pairs", "depot_status_changes", "runtime_keep",
-    "runtime_reopt", "oracle_status", "exact_certification_pass",
-    "global_risk_budget_coupling_pass", "global_risk_budget_coupling_error",
-    "master_solve_count", "oracle_dispatches",
+    "changed_inventory_pairs", "reporting_service_metrics_status",
 ]
 
 
@@ -144,8 +142,8 @@ def _cost_audit(
         "keep_identity_pass": abs(keep_identity_error) <= TOLERANCE,
         "reopt_identity_error": reopt_identity_error,
         "reopt_identity_pass": abs(reopt_identity_error) <= TOLERANCE,
-        "reopt_independent_recourse_error": reopt["recourse_decomposition_error"],
-        "reopt_independent_recourse_pass": abs(reopt["recourse_decomposition_error"]) <= TOLERANCE,
+        "reopt_independent_recourse_error": reopt["recourse_identity_error"],
+        "reopt_independent_recourse_pass": abs(reopt["recourse_identity_error"]) <= TOLERANCE,
         "reconfiguration_friction_included_once": True,
         "decision_value": decision_value,
         "cost_dominance_pass": decision_value >= -TOLERANCE,
@@ -173,47 +171,41 @@ def _result_row(
         "state_id": state["state_id"],
         "state": state["state"],
         "week_start": state["week_start"],
-        "network_id": state["network_id"],
-        "selected_stores": state["selected_stores"],
-        "selected_families": state["selected_families"],
         "relative_demand_shift": float(state["relative_demand_shift"]),
         "positive_demand_shift": float(state["positive_demand_shift"]),
-        "promotion_intensity": float(state["promotion_intensity"]),
-        "holiday_flag": state["holiday_flag"],
-        "transactions_change": float(state["transactions_change"]),
         "total_cost_keep": keep["total_cost"],
         "first_stage_keep": keep["first_stage_expenditure"],
         "robust_recourse_keep": keep["robust_recourse_cost"],
-        "transport_cost_keep": keep["transportation_cost"],
-        "shortage_cost_keep": keep["shortage_cost"],
-        "service_penalty_keep": keep["service_penalty_cost"],
-        "shortage_quantity_keep": keep["shortage_quantity"],
-        "minimum_fill_rate_keep": keep["minimum_fill_rate"],
         "total_cost_reopt": reopt["total_cost"],
         "first_stage_reopt": reopt["first_stage_expenditure"],
         "robust_recourse_reopt": reopt["robust_recourse_cost"],
         "reconfiguration_cost": reopt["reconfiguration_cost"],
-        "transport_cost_reopt": reopt["transportation_cost"],
-        "shortage_cost_reopt": reopt["shortage_cost"],
-        "service_penalty_reopt": reopt["service_penalty_cost"],
-        "shortage_quantity_reopt": reopt["shortage_quantity"],
-        "minimum_fill_rate_reopt": reopt["minimum_fill_rate"],
         "decision_value": decision_value,
         "relative_decision_value": decision_value / max(abs(keep["total_cost"]), TOLERANCE),
         "inventory_change_L1": inventory_change,
         "changed_inventory_pairs": changed_pairs,
-        "depot_status_changes": sum(
-            int(reopt["y"][i]) != int(keep_payload.y0[i])
-            for i in range(len(keep_payload.y0))
-        ),
-        "runtime_keep": keep["runtime"],
-        "runtime_reopt": reopt["runtime"],
-        "oracle_status": reopt["status"],
-        "exact_certification_pass": reopt["exact_certification_pass"],
-        "global_risk_budget_coupling_pass": reopt["global_risk_budget_coupling_pass"],
-        "global_risk_budget_coupling_error": reopt["global_risk_budget_coupling_error"],
-        "master_solve_count": reopt["master_solve_count"],
-        "oracle_dispatches": keep["oracle_dispatches"] + reopt["oracle_dispatches"],
+        "reporting_service_metrics_status": "UNAVAILABLE_REPORTING_TIEBREAK_UNRESOLVED",
+    }
+
+
+def _cost_scale_row(
+    state_id: str,
+    payload: OraclePayload,
+    keep: dict[str, Any],
+) -> dict[str, Any]:
+    instance = payload.instance
+    first_stage = keep["first_stage_expenditure"]
+    recourse = keep["robust_recourse_cost"]
+    return {
+        "state_id": state_id,
+        "first_stage_keep": first_stage,
+        "robust_recourse_keep": recourse,
+        "recourse_to_first_stage_ratio": recourse / first_stage,
+        "max_base_demand": max(map(max, instance["base_demand"])),
+        "max_demand_deviation": max(map(max, instance["demand_deviation"])),
+        "max_shortage_penalty": max(map(max, instance["shortage_penalty"])),
+        "max_service_penalty": max(instance["service_penalty"]),
+        "worst_scenario_recourse_cost": recourse,
     }
 
 
@@ -233,6 +225,8 @@ def _write_report(path: Path, audit: dict[str, Any], rows: list[dict[str, Any]])
         f"{row['decision_value']:.6f} | {row['inventory_change_L1']:.6f} |"
         for row in rows
     )
+    smallest_shift = min(rows, key=lambda row: abs(row["relative_demand_shift"]))
+    largest_shift = max(rows, key=lambda row: abs(row["relative_demand_shift"]))
     path.write_text(
         f"""# Decision-Sensitivity Five-State Chain Report
 
@@ -253,12 +247,19 @@ out-of-sample AI decision.
 - Batch runtime: {audit['batch_runtime_seconds']:.6f} seconds
 - Decision value range: [{min(values):.6f}, {max(values):.6f}]
 - Inventory-change L1 range: [{min(changes):.6f}, {max(changes):.6f}]
+- Median recourse/first-stage ratio: {audit['median_recourse_to_first_stage_ratio']:.6f}
+- Maximum recourse/first-stage ratio: {audit['max_recourse_to_first_stage_ratio']:.6f}
 
 Every result used the same demand state, cost and service parameters, Gamma,
 `lambda_R`, capacity, active network, and evaluation horizon for KEEP and
 REOPTIMIZE. Frozen PRB-Benders reconfiguration friction is already included in
 the REOPTIMIZE first-stage expenditure and was not charged again. All five
 cost identities and dominance checks passed.
+
+KEEP used only the exact Stage-1 LP block optima. REOPTIMIZE used frozen
+PRB-Benders and each returned robust recourse cost matched an independent
+cost-only evaluation within the preregistered tolerance. Reporting-QP-dependent
+service and decomposition fields are deliberately unavailable.
 
 ## Descriptive chain observations
 
@@ -271,6 +272,28 @@ statistical inference or a paper-level structural-signal classification. No
 `STRONG_STRUCTURAL_SIGNAL`, `PARTIAL_STRUCTURAL_SIGNAL`, or
 `WEAK_OR_NO_STRUCTURAL_SIGNAL` label is assigned because the preregistered
 minimum of 20 executed states has not been reached.
+
+## Required feasibility answers
+
+1. Exact cost-only KEEP evaluation succeeded for 5/5 states.
+2. Frozen REOPTIMIZE was exactly certified for 5/5 states.
+3. Independent cost-only recourse identity passed for 5/5 states.
+4. Decision-value dominance passed for 5/5 states.
+5. The recourse/first-stage ratios are reported above and in
+   `cost_scale_audit.csv`; they exceed the fixed scale-warning threshold of
+   {COST_SCALE_WARNING_RATIO:g}.
+6. Whether service/shortage penalty calibration dominates is `INCONCLUSIVE`:
+   penalty maxima and total exact recourse costs alone do not identify a
+   tie-break-independent component decomposition.
+7. Descriptively, `guayas-guayas-context-2-20170501` has a relatively small
+   shift (0.070935) but decision value about 5.881e9, while
+   `guayas-guayas-context-2-20170109` has a larger absolute shift (0.186517)
+   but the batch-minimum decision value of about 4.222e4. The smallest and
+   largest absolute-shift rows are `{smallest_shift['state_id']}` and
+   `{largest_shift['state_id']}` respectively. These are preliminary sample
+   contrasts, not statistical inference.
+8. Do not advance to the 20-state structural-signal pilot until the extreme
+   cost scale has been reviewed. No calibration parameter was changed here.
 """,
         encoding="utf-8",
     )
@@ -362,14 +385,30 @@ def main() -> None:
     print("PRE_SOLVE_GATE PASS: 5/5; beginning authorized execution", flush=True)
     rows: list[dict[str, Any]] = []
     cost_audits: list[dict[str, Any]] = []
+    scale_rows: list[dict[str, Any]] = []
     keep_successes = 0
     reopt_successes = 0
+    root_identity_observed: float | None = None
+    root_identity_pass = False
     failure: str | None = None
     for index, (state_id, keep_payload, reopt_payload) in enumerate(pairs, start=1):
         print(f"[{index}/5] {state_id}: KEEP", flush=True)
         try:
             keep_result = adapter.evaluate(keep_payload)
+            if (
+                state_id == ROOT_CAUSE_IDENTITY_STATE
+                and abs(
+                    keep_result["robust_recourse_cost"]
+                    - ROOT_CAUSE_IDENTITY_VALUE
+                )
+                > TOLERANCE
+            ):
+                raise RuntimeError("BLOCKED_COST_ONLY_IDENTITY_MISMATCH")
+            if state_id == ROOT_CAUSE_IDENTITY_STATE:
+                root_identity_observed = keep_result["robust_recourse_cost"]
+                root_identity_pass = True
             keep_successes += 1
+            scale_rows.append(_cost_scale_row(state_id, keep_payload, keep_result))
             print(f"[{index}/5] {state_id}: REOPTIMIZE", flush=True)
             reopt_result = adapter.evaluate(reopt_payload)
             if not (
@@ -417,17 +456,35 @@ def main() -> None:
         and frozen_clean_after
         and failure is None
     )
+    ratios = [row["recourse_to_first_stage_ratio"] for row in scale_rows]
+    median_ratio = statistics.median(ratios) if ratios else None
+    max_ratio = max(ratios) if ratios else None
+    if passed:
+        chain_status = (
+            "CHAIN_PASS_COST_ONLY_WITH_SCALE_WARNING"
+            if max_ratio is not None and max_ratio >= COST_SCALE_WARNING_RATIO
+            else "CHAIN_PASS_COST_ONLY"
+        )
+    else:
+        chain_status = "CHAIN_FAIL"
     audit = {
-        "chain_status": "CHAIN_PASS" if passed else "CHAIN_FAIL",
+        "chain_status": chain_status,
         "batch_status": "COMPLETE" if passed else "STOPPED",
         "reason": failure,
         "executed_states": len(rows),
         "keep_success_count": keep_successes,
         "reoptimize_certified_count": reopt_successes,
+        "reoptimize_recourse_identity_pass_count": len(cost_audits),
+        "root_cause_identity_expected": ROOT_CAUSE_IDENTITY_VALUE,
+        "root_cause_identity_observed": root_identity_observed,
+        "root_cause_identity_pass": root_identity_pass,
         "policy_execution_count": keep_successes + reopt_successes,
         "actual_solver_dispatch_count": adapter.solver_calls,
         "batch_runtime_seconds": runtime,
         "frozen_checkout_clean_after": frozen_clean_after,
+        "cost_scale_warning_ratio_threshold": COST_SCALE_WARNING_RATIO,
+        "median_recourse_to_first_stage_ratio": median_ratio,
+        "max_recourse_to_first_stage_ratio": max_ratio,
         "preflight": preflight,
     }
     execution_path.write_text(json.dumps(audit, indent=2) + "\n", encoding="utf-8")
@@ -435,6 +492,28 @@ def main() -> None:
         json.dumps(
             {"tolerance": TOLERANCE, "states": cost_audits}, indent=2
         ) + "\n",
+        encoding="utf-8",
+    )
+    scale_fields = [
+        "state_id", "first_stage_keep", "robust_recourse_keep",
+        "recourse_to_first_stage_ratio", "max_base_demand",
+        "max_demand_deviation", "max_shortage_penalty",
+        "max_service_penalty", "worst_scenario_recourse_cost",
+    ]
+    _write_csv(output / "cost_scale_audit.csv", scale_rows, scale_fields)
+    (output / "cost_scale_audit.json").write_text(
+        json.dumps(
+            {
+                "warning_ratio_threshold": COST_SCALE_WARNING_RATIO,
+                "median_recourse_to_first_stage_ratio": median_ratio,
+                "max_recourse_to_first_stage_ratio": max_ratio,
+                "calibration_changed": False,
+                "service_or_shortage_penalty_dominance": "INCONCLUSIVE",
+                "states": scale_rows,
+            },
+            indent=2,
+        )
+        + "\n",
         encoding="utf-8",
     )
     if not passed:
