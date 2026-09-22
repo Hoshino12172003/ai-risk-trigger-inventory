@@ -1,4 +1,5 @@
 import pytest
+import pandas as pd
 
 from ai_risk_trigger_inventory.data.decision_sensitivity import (
     assert_no_post_solve_leakage,
@@ -10,6 +11,9 @@ from ai_risk_trigger_inventory.data.decision_sensitivity import (
     select_stores,
 )
 from experiments.decision_sensitivity_pilot.run_pilot import validate_dry_run_rows
+from experiments.decision_sensitivity_pilot.build_instances import (
+    _select_diverse_states,
+)
 
 
 def test_baseline_and_shift_use_only_prior_weeks() -> None:
@@ -96,3 +100,37 @@ def test_five_state_dry_run_validates_without_executing_oracle() -> None:
     assert result["constructed_states"] == 5
     assert result["executed_states"] == 0
     assert result["solver_calls"] == 0
+
+
+def test_twenty_state_selection_is_balanced_diverse_and_deterministic() -> None:
+    rows = []
+    shifts = [-0.20, -0.08, -0.03, 0.0, 0.03, 0.08, 0.15, 0.25, -0.12, 0.01, 0.12, 0.30]
+    for state in ("Pichincha", "Guayas"):
+        for index, shift in enumerate(shifts):
+            rows.append(
+                {
+                    "state_id": f"{state}-{index}",
+                    "state": state,
+                    "week_start": pd.Timestamp(2013 + index % 5, 1 + index % 12, 1),
+                    "network_id": f"context-{index % 2}",
+                    "selected_families": "A|B|C" if index % 2 else "D|E|F",
+                    "relative_demand_shift": shift,
+                    "positive_demand_shift": max(shift, 0.0),
+                    "promotion_intensity": index / 100.0,
+                    "holiday_flag": index in (4, 9),
+                }
+            )
+    candidates = pd.DataFrame(rows)
+
+    first = _select_diverse_states(candidates, 20)
+    second = _select_diverse_states(candidates, 20)
+
+    assert first["state_id"].tolist() == second["state_id"].tolist()
+    assert first["state"].value_counts().to_dict() == {
+        "Pichincha": 10,
+        "Guayas": 10,
+    }
+    assert (first["relative_demand_shift"] < -0.05).any()
+    assert (first["relative_demand_shift"].abs() <= 0.05).any()
+    assert (first["relative_demand_shift"] > 0.05).any()
+    assert first["selected_families"].nunique() == 2

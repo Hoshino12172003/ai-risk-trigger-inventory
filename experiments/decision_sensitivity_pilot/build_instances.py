@@ -84,6 +84,69 @@ def _load_daily(path: Path) -> pd.DataFrame:
 
 
 def _select_diverse_states(candidates: pd.DataFrame, limit: int) -> pd.DataFrame:
+    if limit == 20:
+        selected: list[int] = []
+        per_state = limit // len(TARGET_STATES)
+        for state in TARGET_STATES:
+            pool = candidates[candidates["state"] == state].copy()
+            promotion_high = float(pool["promotion_intensity"].quantile(0.75))
+            promotion_normal = float(pool["promotion_intensity"].quantile(0.50))
+            strata = (
+                pool["relative_demand_shift"] < -0.05,
+                pool["relative_demand_shift"].abs() <= 0.05,
+                pool["relative_demand_shift"] > 0.05,
+                pool["promotion_intensity"] >= promotion_high,
+                pool["holiday_flag"].astype(bool),
+                (~pool["holiday_flag"].astype(bool))
+                & (pool["promotion_intensity"] <= promotion_normal),
+            )
+            state_selected: list[int] = []
+            for mask in strata:
+                options = pool.loc[mask & ~pool.index.isin(state_selected)].sort_values(
+                    ["week_start", "network_id"]
+                )
+                if options.empty:
+                    continue
+                state_selected.append(int(options.index[len(options) // 2]))
+            remaining = pool.loc[~pool.index.isin(state_selected)].sort_values(
+                ["week_start", "network_id"]
+            )
+            needed = per_state - len(state_selected)
+            if needed > 0:
+                positions = [
+                    round(i * (len(remaining) - 1) / (needed - 1))
+                    for i in range(needed)
+                ] if needed > 1 else [len(remaining) // 2]
+                state_selected.extend(
+                    int(remaining.index[position]) for position in positions
+                )
+            selected.extend(state_selected[:per_state])
+        result = candidates.loc[selected].sort_values(
+            ["week_start", "state", "network_id"]
+        )
+        if len(result) != limit or result["state"].value_counts().min() != per_state:
+            raise ValueError("unable to select a balanced deterministic 20-state pilot")
+        coverage = {
+            "positive": (result["relative_demand_shift"] > 0.05).any(),
+            "negative": (result["relative_demand_shift"] < -0.05).any(),
+            "near_zero": (result["relative_demand_shift"].abs() <= 0.05).any(),
+            "holiday": result["holiday_flag"].astype(bool).any(),
+            "normal": (
+                ~result["holiday_flag"].astype(bool)
+                & (result["promotion_intensity"] <= result["promotion_intensity"].median())
+            ).any(),
+            "promotion_heavy": (
+                result["promotion_intensity"]
+                >= candidates["promotion_intensity"].quantile(0.75)
+            ).any(),
+            "multiple_years": pd.to_datetime(result["week_start"]).dt.year.nunique() >= 4,
+            "two_family_sets": result["selected_families"].nunique() >= 2,
+        }
+        if not all(coverage.values()):
+            missing = [name for name, passed in coverage.items() if not passed]
+            raise ValueError(f"20-state coverage gate failed: {missing}")
+        return result
+
     promotion_cutoff = float(candidates["promotion_intensity"].quantile(0.75))
     strata = (
         candidates["relative_demand_shift"].abs() <= 0.05,
@@ -285,8 +348,8 @@ def build_states(
     candidates: pd.DataFrame,
     limit: int,
 ) -> tuple[pd.DataFrame, list[dict[str, object]]]:
-    if limit != 5:
-        raise ValueError("this authorized dry-run must contain exactly 5 states")
+    if limit not in (5, 20):
+        raise ValueError("authorized construction size must be exactly 5 or 20 states")
     for label, frame in (("network contexts", contexts), ("oracle candidates", candidates)):
         if "state" not in frame or not set(TARGET_STATES) <= set(
             frame["state"].astype(str)
@@ -299,12 +362,27 @@ def build_states(
         candidate_families = candidates.loc[
             candidates["state"].astype(str) == state, "family"
         ]
-        families = select_families(candidate_families, count=FAMILIES_PER_INSTANCE)
+        primary_families = select_families(
+            candidate_families, count=FAMILIES_PER_INSTANCE
+        )
+        available = {str(family).upper() for family in candidate_families}
+        secondary_families = tuple(
+            family
+            for family in PRIORITY_FAMILIES
+            if family in available and family not in primary_families
+        )[:FAMILIES_PER_INSTANCE]
+        if limit == 20 and len(secondary_families) < 2:
+            raise ValueError("20-state pilot requires two priority-family sets")
         store_contexts = select_store_contexts(
             state_frame.groupby("store_nbr")["sales"].sum().to_dict(),
             CONTEXTS_PER_STATE,
         )
         for index, stores in enumerate(store_contexts, start=1):
+            use_secondary = limit == 20 and (
+                (state == TARGET_STATES[0] and index == 2)
+                or (state == TARGET_STATES[1] and index == 1)
+            )
+            families = secondary_families if use_secondary else primary_families
             selections[(state, f"{state.lower()}-context-{index}")] = stores, families
 
     selected_parts = []
@@ -369,6 +447,16 @@ def build_states(
     weekly["history_peak_8"] = group.transform(
         lambda values: values.shift(1).rolling(8, min_periods=4).max()
     )
+    weekly["week_gap_days"] = weekly.groupby(
+        ["state", "network_id", "store_nbr", "family"]
+    )["week_start"].diff().dt.days
+    weekly["history_weeks_contiguous"] = weekly.groupby(
+        ["state", "network_id", "store_nbr", "family"]
+    )["week_gap_days"].transform(
+        lambda values: values.rolling(4, min_periods=4).apply(
+            lambda gaps: float((gaps == 7).all()), raw=False
+        )
+    )
 
     transaction_lookup = transactions.set_index(
         ["state", "network_id", "week_start"]
@@ -384,7 +472,7 @@ def build_states(
             continue
         if cells["baseline_demand"].isna().any() or (
             cells["baseline_demand"] < MIN_BASELINE_DEMAND
-        ).any():
+        ).any() or not cells["history_weeks_contiguous"].eq(1.0).all():
             continue
         lookup_key = (state, network_id, week_start)
         if lookup_key not in transaction_lookup.index:

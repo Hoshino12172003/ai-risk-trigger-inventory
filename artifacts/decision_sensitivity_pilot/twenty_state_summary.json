@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "calibration_for_classification": "PRIMARY_PILOT_CALIBRATION",
+  "main_scheme": "UNIT_COST_BASED",
+  "sensitivity_scheme": "TRANSPORT_BASED",
+  "executed_states_main": 20,
+  "executed_states_sensitivity": 20,
+  "certification_count": 40,
+  "classification": "PARTIAL_STRUCTURAL_SIGNAL",
+  "demand_only_r2": 0.5757349892789747,
+  "model_a_r2": 0.20844975259170628,
+  "model_b_r2": 0.5757349892789747,
+  "structural_model_r2": 0.7938788639302363,
+  "structural_model_adjusted_r2": 0.608369841467449,
+  "structural_adjusted_r2_gain": 0.0562051305618646,
+  "pearson": 0.4565629776840278,
+  "spearman": 0.5849624060150376,
+  "matched_pairs": 21,
+  "calibration_rank_spearman": 1.0,
+  "persistent_matched_pairs": 21,
+  "matched_pair_persistence_rate": 1.0,
+  "top_5_overlap": 5,
+  "bottom_5_overlap": 5,
+  "small_shift_large_consequence_states": [
+    "pichincha-pichincha-context-1-20161205"
+  ],
+  "large_shift_small_consequence_states": [],
+  "represented_states": [
+    "Guayas",
+    "Pichincha"
+  ],
+  "represented_family_sets": [
+    "CLEANING|DAIRY|BREAD/BAKERY",
+    "GROCERY I|BEVERAGES|PRODUCE"
+  ],
+  "top_structural_features_by_absolute_standardized_coefficient": [
+    "relative_demand_shift",
+    "inventory_to_demand_ratio",
+    "transport_substitutability_proxy"
+  ],
+  "thresholds_unchanged": true,
+  "structural_design_matrix_rank": 10,
+  "structural_design_matrix_condition_number": 486.6666857073917,
+  "constructed_states": 20,
+  "solver_dispatch_count": 120,
+  "runtime_seconds": 30.804080000030808,
+  "oracle_commit": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "frozen_checkout_clean_after": true
+}

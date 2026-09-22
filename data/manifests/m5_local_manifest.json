@@ -1,0 +1,88 @@
+{
+  "data_directory": "data/local/m5",
+  "field_provenance": {
+    "CALIBRATED": [
+      "warehouse nodes",
+      "inventory",
+      "capacity",
+      "transport cost",
+      "shortage penalty",
+      "reconfiguration cost"
+    ],
+    "DERIVED": [
+      "lagged demand",
+      "rolling mean",
+      "rolling volatility",
+      "promotion/price-change proxies",
+      "seasonal features",
+      "store/item concentration",
+      "demand shifts"
+    ],
+    "OBSERVED": [
+      "demand/sales",
+      "item",
+      "department",
+      "category",
+      "store",
+      "state",
+      "price",
+      "calendar/event/SNAP fields"
+    ]
+  },
+  "files": [
+    {
+      "columns": [],
+      "file_size": null,
+      "filename": "sales_train_validation.csv",
+      "present": false,
+      "row_count": null,
+      "sha256": null,
+      "source": "M5 Forecasting Accuracy, cleaned or original local input",
+      "status": "OBSERVED_LOCAL_INPUT_MISSING"
+    },
+    {
+      "columns": [],
+      "file_size": null,
+      "filename": "sales_train_evaluation.csv",
+      "present": false,
+      "row_count": null,
+      "sha256": null,
+      "source": "M5 Forecasting Accuracy, cleaned or original local input",
+      "status": "OBSERVED_LOCAL_INPUT_MISSING"
+    },
+    {
+      "columns": [],
+      "file_size": null,
+      "filename": "calendar.csv",
+      "present": false,
+      "row_count": null,
+      "sha256": null,
+      "source": "M5 Forecasting Accuracy, cleaned or original local input",
+      "status": "OBSERVED_LOCAL_INPUT_MISSING"
+    },
+    {
+      "columns": [],
+      "file_size": null,
+      "filename": "sell_prices.csv",
+      "present": false,
+      "row_count": null,
+      "sha256": null,
+      "source": "M5 Forecasting Accuracy, cleaned or original local input",
+      "status": "OBSERVED_LOCAL_INPUT_MISSING"
+    }
+  ],
+  "missing_files": [
+    "sales_train_validation.csv",
+    "sales_train_evaluation.csv",
+    "calendar.csv",
+    "sell_prices.csv"
+  ],
+  "optimizer_calls": 0,
+  "required_files": [
+    "sales_train_validation.csv",
+    "sales_train_evaluation.csv",
+    "calendar.csv",
+    "sell_prices.csv"
+  ],
+  "status": "BLOCKED_MISSING_LOCAL_INPUT"
+}
