@@ -1,15 +1,15 @@
 # AI Risk-Triggered Inventory Reconfiguration
 
-This repository contains the research setup for **Paper 2**. It studies an AI
+This repository contains the research setup for **Paper 3**. It studies an AI
 risk-trigger that screens whether a changed demand and system state warrants
 calling an exact robust inventory reconfiguration oracle.
 
-Paper 1 is maintained separately in
+Paper 2 is maintained separately in
 [`Hoshino12172003/budget-inventory-benders`](https://github.com/Hoshino12172003/budget-inventory-benders).
 Its robust inventory model and PRB-Benders algorithm are treated here as a
 frozen optimization oracle at commit
-`51aebd06edf8f5d6d124d0f3eebdbb901e63274f`. Paper 2 does not modify the
-optimization model from Paper 1.
+`51aebd06edf8f5d6d124d0f3eebdbb901e63274f`. Paper 3 does not modify the
+optimization model from Paper 2.
 
 ## Research question
 
@@ -27,6 +27,11 @@ configuration; a positive trigger invokes the frozen exact optimization oracle.
 - no formal experiment
 - no external dataset downloaded
 - no optimization executed
+
+The current decision-sensitivity feasibility pilot is documented in
+[`docs/decision_sensitivity_instance_protocol.md`](docs/decision_sensitivity_instance_protocol.md).
+Its checked-in result tables are schema-only while local inputs and a verified
+oracle adapter are unavailable.
 
 ## Development
 

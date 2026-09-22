@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class OptimizationOracleProvenance:
-    """Pinned identity of the Paper 1 oracle; this class performs no solve."""
+    """Pinned identity of the Paper 2 oracle; this class performs no solve."""
 
     repository: str = "Hoshino12172003/budget-inventory-benders"
     commit_sha: str = "51aebd06edf8f5d6d124d0f3eebdbb901e63274f"
