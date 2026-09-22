@@ -1,19 +1,21 @@
 # Decision-Sensitivity Feasibility Report
 
-Status: `BLOCKED`
+Status: `DRY_RUN_PASS`
 
 This is an exploratory feasibility setup, not a formal experiment. The four
-specified cleaned Favorita products are not present in the repository or local
-Codex workspace. They were not downloaded. The frozen Paper 2 commit has no
-verified decision-sensitivity solver-dispatch interface, so no oracle was called.
+specified cleaned Favorita products were audited as local, gitignored inputs.
+Static inspection found reusable frozen Paper 2 Python callables, but neither
+callable was executed.
 
-- Dry-run result: `BLOCKED_MISSING_LOCAL_INPUT`
+- Local input audit: `PASS`
+- Frozen oracle interface audit: `PASS`
+- Five-state construction: `PASS`
 - Solver calls: 0
 - Executed states: 0
-- Empirical classification: not assigned while blocked
+- Empirical classification: not assigned; optimization is not authorized
 
-The committed CSV files contain headers only. They are schemas, not observations
-or oracle outputs.
+`decision_states.csv` contains five solver-free pre-solve states.
+`oracle_results.csv` remains header-only and contains no oracle outputs.
 
 ## Required questions
 

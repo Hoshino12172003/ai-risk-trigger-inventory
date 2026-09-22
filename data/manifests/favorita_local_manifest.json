@@ -1,0 +1,143 @@
+{
+  "files": [
+    {
+      "columns": [
+        "state",
+        "family",
+        "week_start",
+        "sales",
+        "onpromotion",
+        "transactions",
+        "oil_price",
+        "holiday_days",
+        "store_count",
+        "sales_mean_4w",
+        "sales_std_4w",
+        "sales_mean_8w",
+        "sales_std_8w",
+        "sales_mean_13w",
+        "sales_std_13w",
+        "sales_change_vs_4w",
+        "sales_z_8w",
+        "decision_state_ready"
+      ],
+      "file_size": 8017616,
+      "filename": "favorita_state_family_week_states.csv.gz",
+      "observed_derived_status": {
+        "derived": "ALL_COLUMNS",
+        "observed": [],
+        "status": "DERIVED"
+      },
+      "row_count": 127776,
+      "sha256": "918dbbfe7578c35d5f4820c999bba5bec2f1a6d2a7db0d1b0063660cc238fa79",
+      "source": "Favorita / Kaggle Store Sales, cleaned externally"
+    },
+    {
+      "columns": [
+        "id",
+        "date",
+        "store_nbr",
+        "family",
+        "sales",
+        "onpromotion",
+        "city",
+        "state",
+        "type",
+        "cluster",
+        "dcoilwtico",
+        "oil_imputed",
+        "transactions_clean",
+        "transaction_missing",
+        "transaction_pre_active",
+        "transaction_post_active",
+        "transaction_internal_missing",
+        "holiday_event_count",
+        "holiday_any",
+        "holiday_national",
+        "holiday_regional",
+        "holiday_local",
+        "dow",
+        "month",
+        "year"
+      ],
+      "file_size": 26949782,
+      "filename": "favorita_store_family_day.csv.gz",
+      "observed_derived_status": {
+        "derived": [
+          "transactions_clean",
+          "oil_imputed",
+          "transaction_missing",
+          "transaction_pre_active",
+          "transaction_post_active",
+          "transaction_internal_missing",
+          "holiday_event_count",
+          "holiday_any",
+          "holiday_national",
+          "holiday_regional",
+          "holiday_local",
+          "dow",
+          "month",
+          "year"
+        ],
+        "observed": [
+          "id",
+          "date",
+          "store_nbr",
+          "family",
+          "sales",
+          "onpromotion",
+          "city",
+          "state",
+          "type",
+          "cluster",
+          "dcoilwtico"
+        ],
+        "status": "OBSERVED_AND_DERIVED"
+      },
+      "row_count": 3000888,
+      "sha256": "08f9b8b221c5014abf8db3f936064af28777f26d23e707742230f005af0501ad",
+      "source": "Favorita / Kaggle Store Sales, cleaned externally"
+    },
+    {
+      "columns": [
+        "state",
+        "family",
+        "total_sales"
+      ],
+      "file_size": 396,
+      "filename": "oracle_pilot_candidates.csv",
+      "observed_derived_status": {
+        "derived": "ALL_COLUMNS",
+        "observed": [],
+        "status": "DERIVED"
+      },
+      "row_count": 12,
+      "sha256": "fc20d74420054813bc413a172e1aa6e836943fdeb7b628b031d5979d153aef18",
+      "source": "Favorita / Kaggle Store Sales, cleaned externally"
+    },
+    {
+      "columns": [
+        "state",
+        "store_count",
+        "city_count",
+        "family_count",
+        "date_count",
+        "total_sales",
+        "mean_daily_sales",
+        "promo_share"
+      ],
+      "file_size": 796,
+      "filename": "state_network_contexts.csv",
+      "observed_derived_status": {
+        "derived": "ALL_COLUMNS",
+        "observed": [],
+        "status": "DERIVED"
+      },
+      "row_count": 9,
+      "sha256": "5d18e29019c24558cbaf5e0096581710cdf995a548299bb2faf9023f25226c02",
+      "source": "Favorita / Kaggle Store Sales, cleaned externally"
+    }
+  ],
+  "manifest_version": 1,
+  "source": "Favorita / Kaggle Store Sales, cleaned externally"
+}

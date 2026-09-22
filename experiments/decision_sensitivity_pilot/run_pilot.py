@@ -23,6 +23,10 @@ from ai_risk_trigger_inventory.oracle.decision_sensitivity import (
     BlockedOracleAdapter,
     OracleIntegrationBlocked,
 )
+from ai_risk_trigger_inventory.oracle.budget_inventory_adapter import (
+    OraclePayload,
+    assert_comparable_payloads,
+)
 from ai_risk_trigger_inventory.oracle.provenance import OptimizationOracleProvenance
 
 
@@ -122,14 +126,112 @@ def validate_dry_run_rows(
     }
 
 
+def validate_payload_file(path: Path, expected_state_ids: set[str]) -> dict[str, object]:
+    entries = json.loads(path.read_text(encoding="utf-8"))
+    if len(entries) != 5:
+        raise ValueError(f"dry-run requires 5 payload pairs, found {len(entries)}")
+    if {entry["state_id"] for entry in entries} != expected_state_ids:
+        raise ValueError("payload state IDs do not match decision states")
+    for entry in entries:
+        if len(entry["payloads"]) != 2:
+            raise ValueError("each state requires one KEEP and one REOPTIMIZE payload")
+        keep = OraclePayload(**entry["payloads"][0])
+        reoptimize = OraclePayload(**entry["payloads"][1])
+        assert_comparable_payloads(keep, reoptimize)
+        instance = keep.instance
+        depots = len(instance["depot_ids"])
+        regions = len(instance["region_ids"])
+        products = len(instance["product_ids"])
+        if (depots, regions, products) != (2, 5, 3):
+            raise ValueError("dry-run oracle dimensions must be 2x5x3")
+        if len(keep.x0) != depots or any(len(row) != products for row in keep.x0):
+            raise ValueError("x0 dimensions do not match oracle instance")
+        if len(keep.y0) != depots:
+            raise ValueError("y0 dimensions do not match oracle instance")
+        for field in ("base_demand", "demand_deviation", "shortage_penalty"):
+            matrix = instance[field]
+            if len(matrix) != regions or any(len(row) != products for row in matrix):
+                raise ValueError(f"{field} dimensions do not match oracle instance")
+        transport = instance["transport_cost"]
+        if len(transport) != depots or any(
+            len(plane) != regions
+            or any(len(row) != products for row in plane)
+            for plane in transport
+        ):
+            raise ValueError("transport cost dimensions do not match oracle instance")
+        numeric_values = [
+            value
+            for matrix in (instance["base_demand"], instance["demand_deviation"], keep.x0)
+            for row in matrix
+            for value in row
+        ]
+        numeric_values.extend(instance["capacity"])
+        numeric_values.extend(instance["fixed_depot_cost"])
+        numeric_values.extend(instance["service_penalty"])
+        numeric_values.extend(instance["product_volume"])
+        numeric_values.extend(
+            value
+            for matrix in (
+                instance["inventory_cost"],
+                instance["shortage_penalty"],
+            )
+            for row in matrix
+            for value in row
+        )
+        numeric_values.extend(
+            value
+            for plane in transport
+            for row in plane
+            for value in row
+        )
+        if not all(math.isfinite(float(value)) and float(value) >= 0 for value in numeric_values):
+            raise ValueError("oracle payload values must be finite and nonnegative")
+        if not all(0.0 <= float(value) <= 1.0 for value in instance["service_level"]):
+            raise ValueError("service levels must use a 0--1 scale")
+        if not (
+            math.isfinite(keep.budget)
+            and keep.budget > 0
+            and math.isfinite(keep.lambda_r)
+            and keep.lambda_r >= 0
+            and 0 <= keep.gamma <= regions
+        ):
+            raise ValueError("budget, lambda, or Gamma scaling is invalid")
+        fixed_cost = sum(
+            instance["fixed_depot_cost"][i] * keep.y0[i] for i in range(depots)
+        )
+        inventory_cost = sum(
+            instance["inventory_cost"][i][j] * keep.x0[i][j]
+            for i in range(depots)
+            for j in range(products)
+        )
+        if keep.budget < fixed_cost + inventory_cost:
+            raise ValueError("calibrated incumbent exceeds the shared financial budget")
+        if instance["provenance"].get("inventory_nodes") != "CALIBRATED_NOT_OBSERVED":
+            raise ValueError("oracle payload inventory nodes must be labeled calibrated")
+    return {
+        "payload_pairs": 5,
+        "payload_dimensions": {"inventory_nodes": 2, "demand_regions": 5, "families": 3},
+        "keep_reoptimize_comparable": True,
+        "units_and_cost_scaling_valid": True,
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("states", type=Path)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--payloads",
+        type=Path,
+        default=Path("artifacts/decision_sensitivity_pilot/dry_run_oracle_payloads.json"),
+    )
     args = parser.parse_args()
     if args.dry_run:
         try:
             result = validate_dry_run(args.states)
+            with args.states.open(encoding="utf-8", newline="") as handle:
+                state_ids = {row["state_id"] for row in csv.DictReader(handle)}
+            result.update(validate_payload_file(args.payloads, state_ids))
         except (FileNotFoundError, KeyError, ValueError) as error:
             print(
                 json.dumps(

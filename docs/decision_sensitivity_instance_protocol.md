@@ -31,12 +31,12 @@ No Kaggle download is performed by this repository. Inputs are supplied through
 
 - `favorita_store_family_day.csv.gz`: primary construction input. Required
   columns are `date`, `state`, `store_nbr`, `family`, `sales`, `onpromotion`,
-  `holiday_flag`, and `transactions`.
+  `holiday_any`, `transactions_clean`, `city`, and `cluster`.
 - `favorita_state_family_week_states.csv.gz`: optional upstream audit product;
   it is not used to replace store-level construction.
-- `state_network_contexts.csv`: required context input with one or more rows per
-  state and columns `state`, `network_id`, `transport_cost_cv`, and
-  `transport_substitutability_proxy`.
+- `state_network_contexts.csv`: required state-level context audit input with
+  `state`, `store_count`, `city_count`, `family_count`, `date_count`,
+  `total_sales`, `mean_daily_sales`, and `promo_share`.
 - `oracle_pilot_candidates.csv`: optional upstream candidate audit product. It
   is not treated as an oracle result.
 
@@ -74,11 +74,17 @@ never divided into relative shift.
 
 - nominal incumbent inventory: `x0 = 1.10 * four-week baseline demand`
 - capacity: the larger of `x0` and `1.20 * trailing-eight-week peak demand`
-- transport cost variation and substitutability proxies supplied by the frozen
-  local network-context construction
+- two virtual inventory nodes per context, anchored deterministically at the
+  first and last selected demand-region ranks
+- transport cost `1 + 0.05 * cluster difference + 0.25 * city mismatch`
+- `demand_bar = current weekly demand`
+- `demand_hat = max(abs(current - baseline), 0.10 * baseline)`
+- service level `0.95`, `lambda_R = 0.05`, `Gamma = 2`, unit inventory and
+  product-volume scales, and budget equal to twice KEEP first-stage cost
 
 Every row labels incumbent inventory as `CALIBRATED`, not observed. These
 calibrations are exploratory and cannot be reinterpreted as empirical inventory.
+The virtual inventory nodes are model constructs, not Favorita warehouses.
 
 ## Deterministic small networks
 
@@ -125,8 +131,11 @@ outputs are inventory-change L1, changed inventory pairs, shortage, transport,
 service-violation, and total costs for KEEP and REOPTIMIZE.
 
 The frozen commit currently exposes no verified decision-sensitivity dispatch
-interface, so `BlockedOracleAdapter` makes zero calls and raises `BLOCKED`.
-No oracle result may be synthesized to bypass this boundary.
+interface through a generic CLI. Static audit found safe Python callables:
+`evaluate_robust_service_detailed` for fixed-x KEEP evaluation and
+`solve_prb_benders` for REOPTIMIZE. `BudgetInventoryAdapter` verifies the frozen
+commit and clean checkout before and after dispatch. This dry-run constructs
+payloads only; it does not invoke either callable.
 
 ## Analysis and preregistered thresholds
 

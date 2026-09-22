@@ -25,7 +25,7 @@ configuration; a positive trigger invokes the frozen exact optimization oracle.
 
 - research setup only
 - no formal experiment
-- no external dataset downloaded
+- externally supplied Favorita inputs remain local and gitignored
 - no optimization executed
 
 The current decision-sensitivity feasibility pilot is documented in
