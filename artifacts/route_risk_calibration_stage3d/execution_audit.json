@@ -1,0 +1,110 @@
+{
+  "status": "STAGE_3D_ROUTE_CALIBRATION_PASS",
+  "full_event_parameter_mapping_status": "COMPLETE_FOR_CURRENT_MODEL",
+  "real_world_calibration_claim": false,
+  "route_calibration_characterization": "literature-anchored; not Ecuador-specific empirical estimation",
+  "stage3c_base_commit": "1620f4787347ef59e8d421e2dca89beef296aa4d",
+  "paper2_frozen_sha_before": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "paper2_frozen_sha_after": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "paper2_clean_before": true,
+  "paper2_clean_after": true,
+  "optimizer_dispatches": 0,
+  "ml_training_dispatches": 0,
+  "genai_dispatches": 0,
+  "route_state_count": 4,
+  "sensitivity_scenario_count": 3,
+  "regional_mapping_rows": 3,
+  "transport_mapping_rows": 3,
+  "evidence_rows": 7,
+  "evidence_counts_by_level": {
+    "LEVEL_1": 3,
+    "LEVEL_2": 1,
+    "LEVEL_3": 3
+  },
+  "prior_artifacts_unchanged": {
+    "stage1": true,
+    "stage2": true,
+    "stage3a": true,
+    "stage3c": true
+  },
+  "prior_artifact_hashes_before": {
+    "stage1": {
+      "artifacts/compound_risk_stage1/base_state.json": "cc0eea70ef8857288cd16f92b83232499f96a6135967a052c7448628f6600d49",
+      "artifacts/compound_risk_stage1/event_catalog.json": "d0b696214039dbb1e7f80726eba96cab03c8a52f312aecf26bc280dfc548e9b0",
+      "artifacts/compound_risk_stage1/execution_audit.json": "d5315d7b7277c539fbd0cba8ebc80afb535b9d822546d1079cbb6bc28deeeb44",
+      "artifacts/compound_risk_stage1/gate_results.json": "dfa2164e2bbeb76c1e1e5cfa5c5f05ba466e143b655a38af233b2b3f9ff40ddd",
+      "artifacts/compound_risk_stage1/inventory_solutions.csv": "55f64b3b2bef7cdb6c8753edf1004d32b0e5ccd4054dd660f4fc09cdd4f43fbb",
+      "artifacts/compound_risk_stage1/regime_summary.csv": "fcc5e511946550fada02d79c228c5435528d00069353a92a173ec013225a7abc",
+      "artifacts/compound_risk_stage1/scenario_catalog.csv": "cab07a5e4476b4fc6cde685e6d8add58f7532136f23889ff8eefa6d8678b8470",
+      "artifacts/compound_risk_stage1/scenario_results.csv": "8d8cde4d9f01000073765c2c37dc7c9867bae65bc7b409d4ba813f53dabdabc4",
+      "artifacts/compound_risk_stage1/sensitivity_summary.csv": "3d06e920221c2505d7419cc1899b139e3ecaff90de54b567fa6ffec7ff338863"
+    },
+    "stage2": {
+      "artifacts/compound_risk_stage2/stage1_equivalence_audit.json": "fe68a75498f3e7442980079eda6f6a3ca240f7b3ad013abc547b8ea1cc301f08"
+    },
+    "stage3a": {
+      "artifacts/risk_impact_calibration_stage3/baseline_model_comparison.csv": "540f58a200391c48c4174e1582cc10b101f9f0e137a2749bafe3047bc376fb93",
+      "artifacts/risk_impact_calibration_stage3/calibration_candidates.csv": "4308c195203a433aab43e030be3bb96408a7450f7f13c008214f76f402e8d56d",
+      "artifacts/risk_impact_calibration_stage3/conditional_ml_results.csv": "219056a9b69233432cc7c543309d0f8de27fd2a34a018b4962ba78d1ed02295d",
+      "artifacts/risk_impact_calibration_stage3/empirical_quantiles.csv": "cb495a4e3d274973c79d96c1fa39eacdba04eb9e689e8fa11a4490288d3411d5",
+      "artifacts/risk_impact_calibration_stage3/execution_audit.json": "31159a3b8751fe9764a2826700b63fd8172a9408304b4b25bcc7c1da436b941f",
+      "artifacts/risk_impact_calibration_stage3/heldout_coverage.csv": "e9d37145dc5ed29c3682aba57a9571ebf01bd863bc38f8250eb4bf92a32cf817",
+      "artifacts/risk_impact_calibration_stage3/heterogeneity_diagnostic.csv": "afd97d8c05a7751b2cd8f690ab93114cc2df3f70137f3fb04b5854480d7ff525",
+      "artifacts/risk_impact_calibration_stage3/ml_necessity_gate.json": "9c015ea4a02d7c60e4f5defea1a838d99376eb456ec2aa38f20e31a5c751ce56",
+      "artifacts/risk_impact_calibration_stage3/provenance_matrix.csv": "8f410825c0dcdbd8e29c487c9de6cfb0083e9903007ae905dfdc058c9c468012",
+      "artifacts/risk_impact_calibration_stage3/quantile_bootstrap_ci.csv": "b14deae31af9229d1c74253f187101d2be767f1327c2f832fa5f48726f11b54d",
+      "artifacts/risk_impact_calibration_stage3/uplift_observations_summary.csv": "ecf8e5ae4d0e34f56d2a0dc99774177d0b658c374cf99982b9d08a8b5b685555"
+    },
+    "stage3c": {
+      "artifacts/risk_impact_mapping_stage3c/demand_severity_mapping.csv": "f4c2f270c21446f3a89db0b63d164da3c2f90744bfb67c28aaa0e224255ac0f7",
+      "artifacts/risk_impact_mapping_stage3c/execution_audit.json": "c169a10a9770c5481b177dc6eaa02eee57cb51f1208851955b028791f5ebdaca",
+      "artifacts/risk_impact_mapping_stage3c/mapping_examples.json": "97ced4e2ee160407e18bf5d4ea470c586dd93d2d38baca99727123951937a37b",
+      "artifacts/risk_impact_mapping_stage3c/regional_emergency_mapping.csv": "e4f541f2dbd53d43a0ff87d26d09f09247137b14bf21975573ad7f3fc80fdb19",
+      "artifacts/risk_impact_mapping_stage3c/route_severity_mapping.csv": "714d4b222aa5b41b4104405a0e6642145f7e4b44f93c687e0928bef03d53f1b9"
+    }
+  },
+  "prior_artifact_hashes_after": {
+    "stage1": {
+      "artifacts/compound_risk_stage1/base_state.json": "cc0eea70ef8857288cd16f92b83232499f96a6135967a052c7448628f6600d49",
+      "artifacts/compound_risk_stage1/event_catalog.json": "d0b696214039dbb1e7f80726eba96cab03c8a52f312aecf26bc280dfc548e9b0",
+      "artifacts/compound_risk_stage1/execution_audit.json": "d5315d7b7277c539fbd0cba8ebc80afb535b9d822546d1079cbb6bc28deeeb44",
+      "artifacts/compound_risk_stage1/gate_results.json": "dfa2164e2bbeb76c1e1e5cfa5c5f05ba466e143b655a38af233b2b3f9ff40ddd",
+      "artifacts/compound_risk_stage1/inventory_solutions.csv": "55f64b3b2bef7cdb6c8753edf1004d32b0e5ccd4054dd660f4fc09cdd4f43fbb",
+      "artifacts/compound_risk_stage1/regime_summary.csv": "fcc5e511946550fada02d79c228c5435528d00069353a92a173ec013225a7abc",
+      "artifacts/compound_risk_stage1/scenario_catalog.csv": "cab07a5e4476b4fc6cde685e6d8add58f7532136f23889ff8eefa6d8678b8470",
+      "artifacts/compound_risk_stage1/scenario_results.csv": "8d8cde4d9f01000073765c2c37dc7c9867bae65bc7b409d4ba813f53dabdabc4",
+      "artifacts/compound_risk_stage1/sensitivity_summary.csv": "3d06e920221c2505d7419cc1899b139e3ecaff90de54b567fa6ffec7ff338863"
+    },
+    "stage2": {
+      "artifacts/compound_risk_stage2/stage1_equivalence_audit.json": "fe68a75498f3e7442980079eda6f6a3ca240f7b3ad013abc547b8ea1cc301f08"
+    },
+    "stage3a": {
+      "artifacts/risk_impact_calibration_stage3/baseline_model_comparison.csv": "540f58a200391c48c4174e1582cc10b101f9f0e137a2749bafe3047bc376fb93",
+      "artifacts/risk_impact_calibration_stage3/calibration_candidates.csv": "4308c195203a433aab43e030be3bb96408a7450f7f13c008214f76f402e8d56d",
+      "artifacts/risk_impact_calibration_stage3/conditional_ml_results.csv": "219056a9b69233432cc7c543309d0f8de27fd2a34a018b4962ba78d1ed02295d",
+      "artifacts/risk_impact_calibration_stage3/empirical_quantiles.csv": "cb495a4e3d274973c79d96c1fa39eacdba04eb9e689e8fa11a4490288d3411d5",
+      "artifacts/risk_impact_calibration_stage3/execution_audit.json": "31159a3b8751fe9764a2826700b63fd8172a9408304b4b25bcc7c1da436b941f",
+      "artifacts/risk_impact_calibration_stage3/heldout_coverage.csv": "e9d37145dc5ed29c3682aba57a9571ebf01bd863bc38f8250eb4bf92a32cf817",
+      "artifacts/risk_impact_calibration_stage3/heterogeneity_diagnostic.csv": "afd97d8c05a7751b2cd8f690ab93114cc2df3f70137f3fb04b5854480d7ff525",
+      "artifacts/risk_impact_calibration_stage3/ml_necessity_gate.json": "9c015ea4a02d7c60e4f5defea1a838d99376eb456ec2aa38f20e31a5c751ce56",
+      "artifacts/risk_impact_calibration_stage3/provenance_matrix.csv": "8f410825c0dcdbd8e29c487c9de6cfb0083e9903007ae905dfdc058c9c468012",
+      "artifacts/risk_impact_calibration_stage3/quantile_bootstrap_ci.csv": "b14deae31af9229d1c74253f187101d2be767f1327c2f832fa5f48726f11b54d",
+      "artifacts/risk_impact_calibration_stage3/uplift_observations_summary.csv": "ecf8e5ae4d0e34f56d2a0dc99774177d0b658c374cf99982b9d08a8b5b685555"
+    },
+    "stage3c": {
+      "artifacts/risk_impact_mapping_stage3c/demand_severity_mapping.csv": "f4c2f270c21446f3a89db0b63d164da3c2f90744bfb67c28aaa0e224255ac0f7",
+      "artifacts/risk_impact_mapping_stage3c/execution_audit.json": "c169a10a9770c5481b177dc6eaa02eee57cb51f1208851955b028791f5ebdaca",
+      "artifacts/risk_impact_mapping_stage3c/mapping_examples.json": "97ced4e2ee160407e18bf5d4ea470c586dd93d2d38baca99727123951937a37b",
+      "artifacts/risk_impact_mapping_stage3c/regional_emergency_mapping.csv": "e4f541f2dbd53d43a0ff87d26d09f09247137b14bf21975573ad7f3fc80fdb19",
+      "artifacts/risk_impact_mapping_stage3c/route_severity_mapping.csv": "714d4b222aa5b41b4104405a0e6642145f7e4b44f93c687e0928bef03d53f1b9"
+    }
+  },
+  "delta_A_definition": "planning-period effective route-service loss fraction",
+  "availability_semantics": "a_ir(xi)=max(0,1-sum_e delta_A[e,i,r]*xi_e)",
+  "excluded_extensions": [
+    "duration correction function",
+    "alternative-route correction function",
+    "geographic transfer model",
+    "traffic-flow simulation"
+  ]
+}

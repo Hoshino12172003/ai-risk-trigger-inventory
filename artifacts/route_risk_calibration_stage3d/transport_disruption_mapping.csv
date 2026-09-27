@@ -1,0 +1,4 @@
+risk_type,delta_D,demand_rule,severity,route_state,delta_A_lower,delta_A_main,delta_A_upper,route_provenance,route_evidence_status,explicit_closure_rule,explicit_closure_delta_A
+TRANSPORT_NETWORK_DISRUPTION,0.0,NO_DEMAND_IMPACT,MODERATE,MODERATE_DISRUPTION,0.1,0.25,0.4,LITERATURE_ANCHORED_CROSS_REGION,LITERATURE_ANCHORED,explicit closure evidence overrides route state to CLOSURE,1.0
+TRANSPORT_NETWORK_DISRUPTION,0.0,NO_DEMAND_IMPACT,HIGH,SEVERE_DISRUPTION,0.4,0.6,0.8,LITERATURE_ANCHORED_CROSS_REGION,LITERATURE_ANCHORED,explicit closure evidence overrides route state to CLOSURE,1.0
+TRANSPORT_NETWORK_DISRUPTION,0.0,NO_DEMAND_IMPACT,EXTREME,SEVERE_DISRUPTION,0.4,0.6,0.8,LITERATURE_ANCHORED_CROSS_REGION,LITERATURE_ANCHORED,explicit closure evidence overrides route state to CLOSURE,1.0

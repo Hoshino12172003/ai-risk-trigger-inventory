@@ -1,0 +1,4 @@
+scenario_label,moderate_delta_A,severe_delta_A,closure_delta_A
+LOW,0.1,0.4,1.0
+MAIN,0.25,0.6,1.0
+HIGH,0.4,0.8,1.0
