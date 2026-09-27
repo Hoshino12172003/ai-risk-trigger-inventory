@@ -1,0 +1,330 @@
+{
+  "base_commit": "2f0ea2d0af2af5424cf947866a6b1e9ca121859c",
+  "paper2_frozen_sha": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "calibration_role": "PRIMARY_PILOT_CALIBRATION",
+  "calibration_id": "UNIT_COST_BASED",
+  "selection_rule": "existing normal week, then abs(relative_demand_shift), state lexical, date ascending, stable ID",
+  "normal_week_definition": "holiday_flag false and promotion_intensity <= median of twenty-state candidates",
+  "state_id": "pichincha-pichincha-context-2-20151012",
+  "date": "2015-10-12",
+  "state": "Pichincha",
+  "relative_demand_shift": -0.040350748091656494,
+  "demand_regions": [
+    "demand_region_store_11",
+    "demand_region_store_49",
+    "demand_region_store_10",
+    "demand_region_store_4",
+    "demand_region_store_7"
+  ],
+  "product_families": [
+    "CLEANING",
+    "DAIRY",
+    "BREAD/BAKERY"
+  ],
+  "baseline_demand": [
+    [
+      11756.0,
+      3616.0,
+      4184.0
+    ],
+    [
+      12276.0,
+      16238.0,
+      8562.630000000001
+    ],
+    [
+      4692.0,
+      1541.0,
+      722.0
+    ],
+    [
+      5882.0,
+      6212.0,
+      3230.65
+    ],
+    [
+      7590.0,
+      10111.0,
+      5314.255
+    ]
+  ],
+  "incumbent_inventory_x0": [
+    [
+      15635.125000000002,
+      4065.05,
+      4729.450000000001
+    ],
+    [
+      36192.475000000006,
+      36416.325000000004,
+      19796.2292
+    ]
+  ],
+  "incumbent_depot_activation_y0": [
+    1,
+    1
+  ],
+  "first_stage_parameters": {
+    "budget": 243862.06190000003,
+    "lambda_r": 0.05,
+    "capacity": [
+      33147.6,
+      117215.6028
+    ],
+    "inventory_upper_bound": [
+      [
+        33147.6,
+        33147.6,
+        33147.6
+      ],
+      [
+        117215.6028,
+        117215.6028,
+        117215.6028
+      ]
+    ],
+    "fixed_depot_cost": [
+      2548.188375,
+      2548.188375
+    ],
+    "inventory_cost": [
+      [
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "product_volume": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "instance": {
+    "base_demand": [
+      [
+        11756.0,
+        3616.0,
+        4184.0
+      ],
+      [
+        12276.0,
+        16238.0,
+        8562.630000000001
+      ],
+      [
+        4692.0,
+        1541.0,
+        722.0
+      ],
+      [
+        5882.0,
+        6212.0,
+        3230.65
+      ],
+      [
+        7590.0,
+        10111.0,
+        5314.255
+      ]
+    ],
+    "capacity": [
+      33147.6,
+      117215.6028
+    ],
+    "demand_deviation": [
+      [
+        2457.75,
+        369.55,
+        429.95000000000005
+      ],
+      [
+        1314.775,
+        1515.4750000000001,
+        884.569675
+      ],
+      [
+        1068.25,
+        264.0,
+        77.325
+      ],
+      [
+        618.9000000000001,
+        622.825,
+        318.96139999999997
+      ],
+      [
+        780.5250000000001,
+        991.7750000000001,
+        518.801125
+      ]
+    ],
+    "depot_ids": [
+      "calibrated_inventory_node_11",
+      "calibrated_inventory_node_7"
+    ],
+    "fixed_depot_cost": [
+      2548.188375,
+      2548.188375
+    ],
+    "initial_inventory": [
+      [
+        15635.125000000002,
+        4065.05,
+        4729.450000000001
+      ],
+      [
+        36192.475000000006,
+        36416.325000000004,
+        19796.2292
+      ]
+    ],
+    "inventory_cost": [
+      [
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "inventory_upper_bound": [
+      [
+        33147.6,
+        33147.6,
+        33147.6
+      ],
+      [
+        117215.6028,
+        117215.6028,
+        117215.6028
+      ]
+    ],
+    "name": "favorita-pichincha-pichincha-context-2-20151012",
+    "product_ids": [
+      "CLEANING",
+      "DAIRY",
+      "BREAD/BAKERY"
+    ],
+    "product_volume": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "provenance": {
+      "data_source": "Favorita / Kaggle Store Sales, cleaned externally",
+      "inventory_nodes": "CALIBRATED_NOT_OBSERVED",
+      "state": "Pichincha",
+      "week_start": "2015-10-12"
+    },
+    "reconfiguration_cost_multiplier": null,
+    "region_ids": [
+      "demand_region_store_11",
+      "demand_region_store_49",
+      "demand_region_store_10",
+      "demand_region_store_4",
+      "demand_region_store_7"
+    ],
+    "service_level": [
+      0.95,
+      0.95,
+      0.95
+    ],
+    "service_penalty": [
+      70.0,
+      70.0,
+      70.0
+    ],
+    "shortage_penalty": [
+      [
+        13.5,
+        13.5,
+        13.5
+      ],
+      [
+        15.0,
+        15.0,
+        15.0
+      ],
+      [
+        17.0,
+        17.0,
+        17.0
+      ],
+      [
+        14.0,
+        14.0,
+        14.0
+      ],
+      [
+        13.5,
+        13.5,
+        13.5
+      ]
+    ],
+    "transport_cost": [
+      [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.5,
+          1.5,
+          1.5
+        ],
+        [
+          1.7,
+          1.7,
+          1.7
+        ],
+        [
+          1.4,
+          1.4,
+          1.4
+        ],
+        [
+          1.35,
+          1.35,
+          1.35
+        ]
+      ],
+      [
+        [
+          1.35,
+          1.35,
+          1.35
+        ],
+        [
+          1.15,
+          1.15,
+          1.15
+        ],
+        [
+          1.35,
+          1.35,
+          1.35
+        ],
+        [
+          1.05,
+          1.05,
+          1.05
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ]
+    ]
+  }
+}

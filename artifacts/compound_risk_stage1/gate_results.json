@@ -1,0 +1,98 @@
+{
+  "gates": {
+    "gate_1_inventory_configuration_change": {
+      "pass": true,
+      "normalized_l1": 0.3387152757000776,
+      "threshold": 0.05
+    },
+    "gate_2_cross_risk_interaction": {
+      "pass": true,
+      "worst_pair": [
+        "E2",
+        "E4"
+      ],
+      "relative_increment": 0.80701680527752,
+      "incremental_interaction_amount": 520761.0690923005,
+      "worse_singleton_cost": 645291.4805327,
+      "threshold": 0.05
+    },
+    "gate_3_reconfiguration_value": {
+      "pass": true,
+      "decision_value": 784394.175194345,
+      "relative_decision_value": 0.3795876443333272,
+      "threshold": 0.01
+    },
+    "gate_4_critical_scenario_adaptation": {
+      "pass": true,
+      "keep_tied_worst": [
+        [
+          "E4",
+          "E5"
+        ]
+      ],
+      "reopt_tied_worst": [
+        [
+          "E1",
+          "E4"
+        ],
+        [
+          "E2",
+          "E4"
+        ],
+        [
+          "E4",
+          "E5"
+        ]
+      ],
+      "keep_top3_tie_expanded": [
+        [
+          "E1",
+          "E4"
+        ],
+        [
+          "E3",
+          "E4"
+        ],
+        [
+          "E4",
+          "E5"
+        ]
+      ],
+      "reopt_top3_tie_expanded": [
+        [
+          "E1",
+          "E4"
+        ],
+        [
+          "E2",
+          "E4"
+        ],
+        [
+          "E4",
+          "E5"
+        ]
+      ]
+    },
+    "gate_5_service_shortage_impact": {
+      "pass": true,
+      "demand_only_worst_shortage": 3731.8249999999925,
+      "full_compound_worst_shortage": 26123.587750000002,
+      "shortage_relative_increase": 6.00021778888347,
+      "minimum_fill_rate_drop": 0.3809143507071513,
+      "shortage_threshold": 0.1,
+      "fill_rate_threshold": 0.02
+    }
+  },
+  "pass_count": 5,
+  "classification": "COMPOUND_RISK_FEASIBILITY_GO",
+  "base_commit": "2f0ea2d0af2af5424cf947866a6b1e9ca121859c",
+  "paper2_frozen_sha": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "calibration_id": "UNIT_COST_BASED",
+  "tie_tolerance_relative": 1e-06,
+  "nominal_identity": {
+    "local": 110689.51200000002,
+    "frozen_cost_only": 110689.512,
+    "pass": true
+  },
+  "demand_only_identity_note": "Event-targeted percentage shocks are not isomorphic to Paper-2 region-product cardinality deviations; no forced identity claim. Internal extensive-form fixed-x cost identity passed."
+}

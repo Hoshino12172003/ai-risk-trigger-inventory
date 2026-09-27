@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "base_commit": "2f0ea2d0af2af5424cf947866a6b1e9ca121859c",
+  "paper2_sha_before": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "paper2_sha_after": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "paper2_clean_before": true,
+  "paper2_clean_after": true,
+  "calibration_id": "UNIT_COST_BASED",
+  "main_regimes": 8,
+  "main_optimizer_dispatches": 40,
+  "sensitivity_optimizer_dispatches": 20,
+  "nominal_identity_optimizer_dispatches": 1,
+  "optimizer_dispatches_total": 61,
+  "optimal_certification_count": 61,
+  "failures": [],
+  "runtime_seconds": 2.3210093999514356,
+  "no_genai_dependency": true,
+  "no_ccg_implementation": true,
+  "no_m5_dependency": true,
+  "paper2_source_modified": false
+}

@@ -1,0 +1,158 @@
+{
+  "base_commit": "2f0ea2d0af2af5424cf947866a6b1e9ca121859c",
+  "paper2_frozen_sha": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "calibration_id": "UNIT_COST_BASED",
+  "magnitude": "MAIN",
+  "events": [
+    {
+      "event_id": "E1",
+      "event_type": "FLASH_DEMAND_SURGE",
+      "demand_shocks": [
+        {
+          "region_id": "demand_region_store_49",
+          "product_id": "DAIRY",
+          "fraction": 0.4
+        }
+      ],
+      "route_losses": [],
+      "selection_note": "highest baseline-demand region-product pair"
+    },
+    {
+      "event_id": "E2",
+      "event_type": "FLASH_DEMAND_SURGE",
+      "demand_shocks": [
+        {
+          "region_id": "demand_region_store_11",
+          "product_id": "CLEANING",
+          "fraction": 0.6
+        }
+      ],
+      "route_losses": [],
+      "selection_note": "highest baseline-demand cell with region and product different from E1"
+    },
+    {
+      "event_id": "E3",
+      "event_type": "REGIONAL_EMERGENCY_DISRUPTION",
+      "demand_shocks": [
+        {
+          "region_id": "demand_region_store_10",
+          "product_id": "CLEANING",
+          "fraction": 0.2
+        },
+        {
+          "region_id": "demand_region_store_10",
+          "product_id": "DAIRY",
+          "fraction": 0.2
+        },
+        {
+          "region_id": "demand_region_store_10",
+          "product_id": "BREAD/BAKERY",
+          "fraction": 0.2
+        },
+        {
+          "region_id": "demand_region_store_11",
+          "product_id": "CLEANING",
+          "fraction": 0.2
+        },
+        {
+          "region_id": "demand_region_store_11",
+          "product_id": "DAIRY",
+          "fraction": 0.2
+        },
+        {
+          "region_id": "demand_region_store_11",
+          "product_id": "BREAD/BAKERY",
+          "fraction": 0.2
+        }
+      ],
+      "route_losses": [
+        {
+          "depot_id": "calibrated_inventory_node_7",
+          "region_id": "demand_region_store_10",
+          "fraction": 0.5
+        },
+        {
+          "depot_id": "calibrated_inventory_node_11",
+          "region_id": "demand_region_store_11",
+          "fraction": 0.5
+        }
+      ],
+      "selection_note": "first two lexically sorted stable region IDs and their assigned routes"
+    },
+    {
+      "event_id": "E4",
+      "event_type": "REGIONAL_EMERGENCY_DISRUPTION",
+      "demand_shocks": [
+        {
+          "region_id": "demand_region_store_49",
+          "product_id": "CLEANING",
+          "fraction": 0.3
+        },
+        {
+          "region_id": "demand_region_store_49",
+          "product_id": "DAIRY",
+          "fraction": 0.3
+        },
+        {
+          "region_id": "demand_region_store_49",
+          "product_id": "BREAD/BAKERY",
+          "fraction": 0.3
+        },
+        {
+          "region_id": "demand_region_store_7",
+          "product_id": "CLEANING",
+          "fraction": 0.3
+        },
+        {
+          "region_id": "demand_region_store_7",
+          "product_id": "DAIRY",
+          "fraction": 0.3
+        },
+        {
+          "region_id": "demand_region_store_7",
+          "product_id": "BREAD/BAKERY",
+          "fraction": 0.3
+        }
+      ],
+      "route_losses": [
+        {
+          "depot_id": "calibrated_inventory_node_7",
+          "region_id": "demand_region_store_49",
+          "fraction": 0.5
+        },
+        {
+          "depot_id": "calibrated_inventory_node_7",
+          "region_id": "demand_region_store_7",
+          "fraction": 0.5
+        }
+      ],
+      "selection_note": "last two lexically sorted stable region IDs and their assigned routes"
+    },
+    {
+      "event_id": "E5",
+      "event_type": "TRANSPORT_NETWORK_DISRUPTION",
+      "demand_shocks": [],
+      "route_losses": [
+        {
+          "depot_id": "calibrated_inventory_node_7",
+          "region_id": "demand_region_store_4",
+          "fraction": 0.75
+        }
+      ],
+      "selection_note": "assigned route of the middle lexically sorted region"
+    },
+    {
+      "event_id": "E6",
+      "event_type": "TRANSPORT_NETWORK_DISRUPTION",
+      "demand_shocks": [],
+      "route_losses": [
+        {
+          "depot_id": "calibrated_inventory_node_11",
+          "region_id": "demand_region_store_10",
+          "fraction": 1.0
+        }
+      ],
+      "selection_note": "first stable different-warehouse/different-region route avoiding E3/E4 assigned routes where possible"
+    }
+  ]
+}
