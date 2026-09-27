@@ -1,0 +1,5 @@
+route_state,severity_class,delta_A_lower,delta_A_main,delta_A_upper,interpretation,calibration_basis,evidence_status,provenance
+NORMAL,NORMAL,0.0,0.0,0.0,No effective route-service loss.,MODEL_DEFINITION,DEFINITION_SUPPORTED,DEFINITION
+MODERATE_DISRUPTION,MODERATE,0.1,0.25,0.4,Partial planning-period effective route-service loss.,CROSS_EVIDENCE_LITERATURE_RANGE,LITERATURE_ANCHORED,LITERATURE_ANCHORED_CROSS_REGION
+SEVERE_DISRUPTION,HIGH_OR_EXTREME,0.4,0.6,0.8,Large planning-period effective route-service loss short of confirmed closure.,CROSS_EVIDENCE_LITERATURE_RANGE,LITERATURE_ANCHORED,LITERATURE_ANCHORED_CROSS_REGION
+CLOSURE,EXPLICIT_CLOSURE,1.0,1.0,1.0,Confirmed warehouse-region arc is unavailable for the planning period.,MODEL_DEFINITION,DEFINITION_SUPPORTED,DEFINITION
