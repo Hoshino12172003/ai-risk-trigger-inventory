@@ -1,0 +1,153 @@
+{
+  "A": {
+    "metadata": {
+      "event_id": "EX_A",
+      "risk_type": "FLASH_DEMAND_SURGE",
+      "event_subtype": "flash promotion",
+      "region_scope": [
+        "EXAMPLE_REGION"
+      ],
+      "severity": "HIGH",
+      "start_time": "2030-01-01T00:00:00Z",
+      "expected_duration": "ONE_PLANNING_PERIOD_EQUIVALENT",
+      "evidence_source": "SOLVER_FREE_MAPPING_EXAMPLE",
+      "affected_arcs": []
+    },
+    "demand_mapping": {
+      "calibration_stratum": "D1_PROMOTION",
+      "quantile_level": 0.9,
+      "delta_D": 0.4615384615384615,
+      "sample_size": 37086,
+      "bootstrap_ci_lower": 0.4488062180313197,
+      "bootstrap_ci_upper": 0.4741487837075672,
+      "heldout_coverage": 0.9003045836119159,
+      "source": "Stage-3A empirical_quantiles/bootstrap/heldout_coverage artifacts",
+      "status": "DATA_SUPPORTED",
+      "resolution_code": "RESOLVED_FROM_STAGE3A",
+      "event_id": "EX_A",
+      "risk_type": "FLASH_DEMAND_SURGE",
+      "event_subtype": "flash promotion",
+      "severity": "HIGH",
+      "provenance": "FAVORITA_RETAIL_DEMAND_SURGE_PROXY"
+    }
+  },
+  "B": {
+    "metadata": {
+      "event_id": "EX_B",
+      "risk_type": "FLASH_DEMAND_SURGE",
+      "event_subtype": "scheduled public event",
+      "region_scope": [
+        "EXAMPLE_REGION"
+      ],
+      "severity": "EXTREME",
+      "start_time": "2030-01-01T00:00:00Z",
+      "expected_duration": "ONE_PLANNING_PERIOD_EQUIVALENT",
+      "evidence_source": "SOLVER_FREE_MAPPING_EXAMPLE",
+      "affected_arcs": []
+    },
+    "demand_mapping": {
+      "calibration_stratum": "D2_HOLIDAY_EVENT",
+      "quantile_level": 0.95,
+      "delta_D": 2.6666666666666665,
+      "sample_size": 20156,
+      "bootstrap_ci_lower": 2.5,
+      "bootstrap_ci_upper": 3.0,
+      "heldout_coverage": 0.9705240174672488,
+      "source": "Stage-3A empirical_quantiles/bootstrap/heldout_coverage artifacts",
+      "status": "DATA_SUPPORTED",
+      "resolution_code": "RESOLVED_FROM_STAGE3A",
+      "event_id": "EX_B",
+      "risk_type": "FLASH_DEMAND_SURGE",
+      "event_subtype": "scheduled public event",
+      "severity": "EXTREME",
+      "provenance": "FAVORITA_RETAIL_DEMAND_SURGE_PROXY"
+    }
+  },
+  "C": {
+    "metadata": {
+      "event_id": "EX_C",
+      "risk_type": "REGIONAL_EMERGENCY_DISRUPTION",
+      "event_subtype": "regional emergency",
+      "region_scope": [
+        "EXAMPLE_REGION"
+      ],
+      "severity": "HIGH",
+      "start_time": "2030-01-01T00:00:00Z",
+      "expected_duration": "ONE_PLANNING_PERIOD_EQUIVALENT",
+      "evidence_source": "SOLVER_FREE_MAPPING_EXAMPLE",
+      "affected_arcs": [
+        {
+          "warehouse_id": "WH_EXAMPLE_1",
+          "region_id": "REGION_EXAMPLE_1",
+          "impact_scope": "WAREHOUSE_REGION_ARC"
+        }
+      ]
+    },
+    "demand_mapping": {
+      "calibration_stratum": "D4_GENERIC_EVENT_PROXY",
+      "quantile_level": 0.9,
+      "delta_D": 0.7333333333333333,
+      "sample_size": 75946,
+      "bootstrap_ci_lower": 0.7142857142857143,
+      "bootstrap_ci_upper": 0.7489864357816202,
+      "heldout_coverage": 0.9224073240282156,
+      "source": "Stage-3A empirical_quantiles/bootstrap/heldout_coverage artifacts",
+      "status": "INDIRECT_PROXY",
+      "resolution_code": "RESOLVED_FROM_STAGE3A",
+      "event_id": "EX_C",
+      "risk_type": "REGIONAL_EMERGENCY_DISRUPTION",
+      "event_subtype": "regional emergency",
+      "severity": "HIGH",
+      "provenance": "INDIRECT_RETAIL_PROXY"
+    },
+    "route_mapping": [
+      {
+        "event_id": "EX_C",
+        "warehouse_id": "WH_EXAMPLE_1",
+        "region_id": "REGION_EXAMPLE_1",
+        "impact_scope": "WAREHOUSE_REGION_ARC",
+        "severity": "HIGH",
+        "route_state": "SEVERE_DISRUPTION",
+        "delta_A": null,
+        "provenance": "PENDING_EXTERNAL_EVIDENCE",
+        "status": "PENDING_EXTERNAL_EVIDENCE",
+        "expected_duration": "ONE_PLANNING_PERIOD_EQUIVALENT"
+      }
+    ]
+  },
+  "D": {
+    "metadata": {
+      "event_id": "EX_D",
+      "risk_type": "TRANSPORT_NETWORK_DISRUPTION",
+      "event_subtype": "confirmed full road closure",
+      "region_scope": [
+        "EXAMPLE_REGION"
+      ],
+      "severity": "EXTREME",
+      "start_time": "2030-01-01T00:00:00Z",
+      "expected_duration": "ONE_PLANNING_PERIOD_EQUIVALENT",
+      "evidence_source": "SOLVER_FREE_MAPPING_EXAMPLE",
+      "affected_arcs": [
+        {
+          "warehouse_id": "WH_EXAMPLE_2",
+          "region_id": "REGION_EXAMPLE_2",
+          "impact_scope": "WAREHOUSE_REGION_ARC"
+        }
+      ]
+    },
+    "route_mapping": [
+      {
+        "event_id": "EX_D",
+        "warehouse_id": "WH_EXAMPLE_2",
+        "region_id": "REGION_EXAMPLE_2",
+        "impact_scope": "WAREHOUSE_REGION_ARC",
+        "severity": "EXTREME",
+        "route_state": "CLOSURE",
+        "delta_A": 1.0,
+        "provenance": "DEFINITION",
+        "status": "DEFINITION_SUPPORTED",
+        "expected_duration": "ONE_PLANNING_PERIOD_EQUIVALENT"
+      }
+    ]
+  }
+}
