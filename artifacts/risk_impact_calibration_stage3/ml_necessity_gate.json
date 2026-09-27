@@ -1,0 +1,62 @@
+{
+  "classification": "ML_NEEDED_FOR_CONDITIONAL_CALIBRATION",
+  "ml_needed": true,
+  "conditions": {
+    "A_median_group_error": false,
+    "B_fraction_large_error": false,
+    "C_q90_dispersion": true
+  },
+  "median_group_absolute_q90_coverage_error": 0.04081145584725543,
+  "fraction_groups_absolute_error_over_0_10": 0.09090909090909091,
+  "eligible_coverage_groups": 110,
+  "product_state_group_q90_iqr": 0.5812102934368857,
+  "eligible_q90_groups": 48,
+  "thresholds": {
+    "median_group_absolute_q90_coverage_error": 0.05,
+    "fraction_groups_absolute_error_over_0_10": 0.25,
+    "large_group_error": 0.1,
+    "group_q90_iqr": 0.2,
+    "minimum_test_group_size": 30
+  },
+  "protocol_frozen_before_results": true,
+  "stage3b_executed": true,
+  "conditional_ml_results_file": "conditional_ml_results.csv",
+  "selected_model_family_on_validation": "LINEAR_QUANTILE",
+  "validation_average_pinball_loss": {
+    "LINEAR_QUANTILE": 0.21131140000168144,
+    "GRADIENT_BOOSTING_QUANTILE": 0.605142337461444
+  },
+  "ml_value_gate": {
+    "classification": "STAGE_3_SIMPLE_CALIBRATION_PREFERRED",
+    "supported": false,
+    "conditions": {
+      "overall_q90_improvement": false,
+      "median_group_q90_improvement": false,
+      "no_material_q95_degradation": true
+    },
+    "simple_global_quantile_test_metrics": {
+      "q90_coverage": 0.9224073240282156,
+      "q90_absolute_error": 0.022407324028215547,
+      "q95_coverage": 0.9653309320126069,
+      "q95_absolute_error": 0.015330932012606935,
+      "median_group_q90_absolute_error": 0.053837883109239926,
+      "eligible_groups": 48
+    },
+    "selected_conditional_model_test_metrics": {
+      "q90_coverage": 0.9461703937165441,
+      "q90_absolute_error": 0.04617039371654408,
+      "q95_coverage": 0.981289709340137,
+      "q95_absolute_error": 0.031289709340137084,
+      "median_group_q90_absolute_error": 0.05645654807304046,
+      "eligible_groups": 48
+    },
+    "overall_q90_absolute_error_improvement": -0.02376306968832853,
+    "median_group_q90_absolute_error_improvement": -0.002618664963800532,
+    "q95_absolute_error_worsening": 0.01595877732753015,
+    "thresholds": {
+      "overall_q90_absolute_error_improvement": 0.02,
+      "median_group_q90_absolute_error_improvement": 0.02,
+      "maximum_q95_absolute_error_worsening": 0.02
+    }
+  }
+}
