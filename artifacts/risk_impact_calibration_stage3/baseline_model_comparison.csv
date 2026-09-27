@@ -1,0 +1,5 @@
+baseline_id,selection_rank,validation_rows,validation_mae,validation_median_ape,validation_median_relative_bias,normal_subset,test_rows_used_for_selection,selected
+B1_MEDIAN_4,0,14747,25.364332441852575,0.21739130434782608,-0.009523809523809525,VALIDATION; no holiday; no promotion; positive demand; common valid history,0,False
+B2_MEDIAN_8,1,14747,24.574979955991047,0.21739130434782608,-0.005917159763313609,VALIDATION; no holiday; no promotion; positive demand; common valid history,0,False
+B3_MEDIAN_12,2,14747,24.152671554146604,0.21818181818181817,0.0,VALIDATION; no holiday; no promotion; positive demand; common valid history,0,True
+B4_LAG_52,3,14747,37.076605541059195,0.35,0.0,VALIDATION; no holiday; no promotion; positive demand; common valid history,0,False

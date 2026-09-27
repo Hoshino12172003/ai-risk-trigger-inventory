@@ -1,0 +1,10 @@
+item,category,source,calibration_use
+sales,OBSERVED,Favorita,actual demand
+promotions,OBSERVED,Favorita,retail event proxy
+dates/store/state/family,OBSERVED,Favorita,panel keys and context
+holiday/event records,OBSERVED,Favorita,source retail context
+weekly holiday/event flags,DERIVED,Favorita context transformation,retail event proxy
+weekly demand/baselines/uplift/quantiles,DERIVED,Stage-3 causal pipeline,candidate delta_D
+warehouses/capacities/routes,CALIBRATED_NOT_OBSERVED,not in Favorita,none
+route disruption magnitude,CALIBRATED_NOT_OBSERVED,not in Favorita,STRESS_TEST_ONLY
+external route evidence,PENDING_EXTERNAL_EVIDENCE,none verified,future delta_A calibration
