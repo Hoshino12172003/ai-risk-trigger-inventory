@@ -1,0 +1,8 @@
+route_state,severity,delta_A,interpretation,evidence_source,provenance,status,mapping_role
+NORMAL,NORMAL,0.0,No effective route-service loss.,Route-state definition,DEFINITION,DEFINITION_SUPPORTED,FORMAL_STATE
+MODERATE_DISRUPTION,MODERATE,,Partial route-service loss; magnitude is unresolved.,No verified external route evidence,PENDING_EXTERNAL_EVIDENCE,PENDING_EXTERNAL_EVIDENCE,FORMAL_STATE
+SEVERE_DISRUPTION,HIGH_OR_EXTREME,,Large route-service loss; magnitude is unresolved.,No verified external route evidence,PENDING_EXTERNAL_EVIDENCE,PENDING_EXTERNAL_EVIDENCE,FORMAL_STATE
+CLOSURE,CLOSURE,1.0,Confirmed full warehouse-region arc closure.,Route-state definition,DEFINITION,DEFINITION_SUPPORTED,FORMAL_STATE
+REFERENCE_ONLY,NOT_APPLICABLE,0.25,Stage-1 preregistered stress-test reference; not a formal severity mapping.,Stage-1 stress test,PREREGISTERED_STAGE1_STRESS_MAGNITUDE,STRESS_TEST_REFERENCE,REFERENCE_ONLY
+REFERENCE_ONLY,NOT_APPLICABLE,0.5,Stage-1 preregistered stress-test reference; not a formal severity mapping.,Stage-1 stress test,PREREGISTERED_STAGE1_STRESS_MAGNITUDE,STRESS_TEST_REFERENCE,REFERENCE_ONLY
+REFERENCE_ONLY,NOT_APPLICABLE,0.75,Stage-1 preregistered stress-test reference; not a formal severity mapping.,Stage-1 stress test,PREREGISTERED_STAGE1_STRESS_MAGNITUDE,STRESS_TEST_REFERENCE,REFERENCE_ONLY
