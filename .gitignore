@@ -6,5 +6,7 @@ data/raw/
 data/interim/
 data/processed/
 data/local/
+# Stage 5A raw public-source corpus (manifests are summarized under artifacts/).
+data/local/raw_risk_corpus/
 artifacts/formal/*
 !artifacts/formal/.gitkeep
