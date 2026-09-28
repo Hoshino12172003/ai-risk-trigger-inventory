@@ -55,13 +55,29 @@ def test_schema_audit_records_all_expected_files_without_invented_values() -> No
 
 def test_blocked_run_created_no_calibration_outputs_or_dispatches() -> None:
     assert sorted(path.name for path in ARTIFACTS.iterdir()) == [
-        "data_availability_audit.json", "m5_schema_audit.csv",
+        "data_availability_audit.json", "data_restoration_audit.json", "m5_schema_audit.csv",
     ]
     audit = _audit()
     assert audit["optimizer_dispatches"] == 0
     assert audit["genai_dispatches"] == 0
     assert audit["ml_training_dispatches"] == 0
     assert audit["fabricated_or_downloaded_data"] is False
+
+
+def test_failed_data_restoration_is_audited_without_copy_or_calibration() -> None:
+    restoration = json.loads(
+        (ARTIFACTS / "data_restoration_audit.json").read_text(encoding="utf-8")
+    )
+    assert restoration["status"] == "DATA_RESTORATION_BLOCKED_SOURCE_NOT_FOUND"
+    assert restoration["copy_started"] is False
+    assert restoration["calibration_started"] is False
+    assert [row["filename"] for row in restoration["files"]] == [
+        "calendar.csv", "sell_prices.csv", "sales_train_validation.csv",
+        "sales_train_evaluation.csv", "sample_submission.csv",
+    ]
+    assert all(row["copy_status"] == "SOURCE_NOT_FOUND" for row in restoration["files"])
+    assert all(row["size_bytes"] is None for row in restoration["files"])
+    assert all(row["sha256"] is None for row in restoration["files"])
 
 
 def test_prior_artifacts_are_unchanged() -> None:

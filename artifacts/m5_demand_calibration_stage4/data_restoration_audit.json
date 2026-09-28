@@ -1,0 +1,58 @@
+{
+  "status": "DATA_RESTORATION_BLOCKED_SOURCE_NOT_FOUND",
+  "stage4_branch": "feat/m5-demand-calibration-validation-stage4",
+  "stage4_start_commit": "329e28fab0b018e7e503809fdde100590988c948",
+  "source_root": "/mnt/data",
+  "destination_root": "C:\\Users\\Hu Jiaxin\\Documents\\Codex\\2026-09-28\\hoshino12172003-ai-risk-trigger-inventory-stage4\\data\\local\\m5",
+  "copy_started": false,
+  "calibration_started": false,
+  "files": [
+    {
+      "filename": "calendar.csv",
+      "source_path": "/mnt/data/calendar.csv",
+      "destination_path": "C:\\Users\\Hu Jiaxin\\Documents\\Codex\\2026-09-28\\hoshino12172003-ai-risk-trigger-inventory-stage4\\data\\local\\m5\\calendar.csv",
+      "size_bytes": null,
+      "sha256": null,
+      "copy_status": "SOURCE_NOT_FOUND"
+    },
+    {
+      "filename": "sell_prices.csv",
+      "source_path": "/mnt/data/sell_prices.csv",
+      "destination_path": "C:\\Users\\Hu Jiaxin\\Documents\\Codex\\2026-09-28\\hoshino12172003-ai-risk-trigger-inventory-stage4\\data\\local\\m5\\sell_prices.csv",
+      "size_bytes": null,
+      "sha256": null,
+      "copy_status": "SOURCE_NOT_FOUND"
+    },
+    {
+      "filename": "sales_train_validation.csv",
+      "source_path": "/mnt/data/sales_train_validation.csv",
+      "destination_path": "C:\\Users\\Hu Jiaxin\\Documents\\Codex\\2026-09-28\\hoshino12172003-ai-risk-trigger-inventory-stage4\\data\\local\\m5\\sales_train_validation.csv",
+      "size_bytes": null,
+      "sha256": null,
+      "copy_status": "SOURCE_NOT_FOUND"
+    },
+    {
+      "filename": "sales_train_evaluation.csv",
+      "source_path": "/mnt/data/sales_train_evaluation.csv",
+      "destination_path": "C:\\Users\\Hu Jiaxin\\Documents\\Codex\\2026-09-28\\hoshino12172003-ai-risk-trigger-inventory-stage4\\data\\local\\m5\\sales_train_evaluation.csv",
+      "size_bytes": null,
+      "sha256": null,
+      "copy_status": "SOURCE_NOT_FOUND"
+    },
+    {
+      "filename": "sample_submission.csv",
+      "source_path": "/mnt/data/sample_submission.csv",
+      "destination_path": "C:\\Users\\Hu Jiaxin\\Documents\\Codex\\2026-09-28\\hoshino12172003-ai-risk-trigger-inventory-stage4\\data\\local\\m5\\sample_submission.csv",
+      "size_bytes": null,
+      "sha256": null,
+      "copy_status": "SOURCE_NOT_FOUND"
+    }
+  ],
+  "checks": {
+    "windows_mnt_data_exists": false,
+    "wsl_available": false,
+    "task_attachment_contains_csv_files": false,
+    "workspace_search_found_expected_files": false
+  },
+  "stop_reason": "The supplied /mnt/data paths are not mounted in the current Windows environment and the task attachment contains only the pasted instruction text. No M5 file was copied or read."
+}
