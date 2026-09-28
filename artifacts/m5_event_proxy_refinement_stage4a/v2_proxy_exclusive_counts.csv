@@ -1,0 +1,6 @@
+proxy_name,sample_count,exclusive_against_all_listed,atomic_exclusive_count,calendar_price_intersection_count,calendar_snap_intersection_count,price_snap_intersection_count,calendar_price_snap_intersection_count
+M5_CALENDAR_EVENT_V2,4080,0,1862.0,31,2210,26,23
+M5_SNAP_CONTEXT_V2,4032,0,1819.0,31,2210,26,23
+M5_PRICE_PROMOTION_EVENT_V2,50,0,16.0,31,2210,26,23
+M5_CALENDAR_PRICE_OVERLAP_V2,31,0,,31,2210,26,23
+M5_GENERIC_DEMAND_STIMULATION_V2,5918,0,,31,2210,26,23

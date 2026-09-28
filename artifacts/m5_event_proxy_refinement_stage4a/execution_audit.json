@@ -1,0 +1,156 @@
+{
+  "status": "STAGE_4A_PROXY_REFINEMENT_PASS",
+  "base_commit": "83311de2e412e8f22ae5c142ad163498fade5bdf",
+  "stage4_scientific_conclusion_preserved": true,
+  "stage4_original_artifacts_unchanged": true,
+  "protected_artifacts_unchanged": {
+    "stage1": true,
+    "stage2": true,
+    "stage3a": true,
+    "stage3c": true,
+    "stage3d": true,
+    "stage4": true
+  },
+  "protected_hashes_before": {
+    "stage1": {
+      "artifacts/compound_risk_stage1/base_state.json": "cc0eea70ef8857288cd16f92b83232499f96a6135967a052c7448628f6600d49",
+      "artifacts/compound_risk_stage1/event_catalog.json": "d0b696214039dbb1e7f80726eba96cab03c8a52f312aecf26bc280dfc548e9b0",
+      "artifacts/compound_risk_stage1/execution_audit.json": "d5315d7b7277c539fbd0cba8ebc80afb535b9d822546d1079cbb6bc28deeeb44",
+      "artifacts/compound_risk_stage1/gate_results.json": "dfa2164e2bbeb76c1e1e5cfa5c5f05ba466e143b655a38af233b2b3f9ff40ddd",
+      "artifacts/compound_risk_stage1/inventory_solutions.csv": "55f64b3b2bef7cdb6c8753edf1004d32b0e5ccd4054dd660f4fc09cdd4f43fbb",
+      "artifacts/compound_risk_stage1/regime_summary.csv": "fcc5e511946550fada02d79c228c5435528d00069353a92a173ec013225a7abc",
+      "artifacts/compound_risk_stage1/scenario_catalog.csv": "cab07a5e4476b4fc6cde685e6d8add58f7532136f23889ff8eefa6d8678b8470",
+      "artifacts/compound_risk_stage1/scenario_results.csv": "8d8cde4d9f01000073765c2c37dc7c9867bae65bc7b409d4ba813f53dabdabc4",
+      "artifacts/compound_risk_stage1/sensitivity_summary.csv": "3d06e920221c2505d7419cc1899b139e3ecaff90de54b567fa6ffec7ff338863"
+    },
+    "stage2": {
+      "artifacts/compound_risk_stage2/stage1_equivalence_audit.json": "fe68a75498f3e7442980079eda6f6a3ca240f7b3ad013abc547b8ea1cc301f08"
+    },
+    "stage3a": {
+      "artifacts/risk_impact_calibration_stage3/baseline_model_comparison.csv": "540f58a200391c48c4174e1582cc10b101f9f0e137a2749bafe3047bc376fb93",
+      "artifacts/risk_impact_calibration_stage3/calibration_candidates.csv": "4308c195203a433aab43e030be3bb96408a7450f7f13c008214f76f402e8d56d",
+      "artifacts/risk_impact_calibration_stage3/conditional_ml_results.csv": "219056a9b69233432cc7c543309d0f8de27fd2a34a018b4962ba78d1ed02295d",
+      "artifacts/risk_impact_calibration_stage3/empirical_quantiles.csv": "cb495a4e3d274973c79d96c1fa39eacdba04eb9e689e8fa11a4490288d3411d5",
+      "artifacts/risk_impact_calibration_stage3/execution_audit.json": "31159a3b8751fe9764a2826700b63fd8172a9408304b4b25bcc7c1da436b941f",
+      "artifacts/risk_impact_calibration_stage3/heldout_coverage.csv": "e9d37145dc5ed29c3682aba57a9571ebf01bd863bc38f8250eb4bf92a32cf817",
+      "artifacts/risk_impact_calibration_stage3/heterogeneity_diagnostic.csv": "afd97d8c05a7751b2cd8f690ab93114cc2df3f70137f3fb04b5854480d7ff525",
+      "artifacts/risk_impact_calibration_stage3/ml_necessity_gate.json": "9c015ea4a02d7c60e4f5defea1a838d99376eb456ec2aa38f20e31a5c751ce56",
+      "artifacts/risk_impact_calibration_stage3/provenance_matrix.csv": "8f410825c0dcdbd8e29c487c9de6cfb0083e9903007ae905dfdc058c9c468012",
+      "artifacts/risk_impact_calibration_stage3/quantile_bootstrap_ci.csv": "b14deae31af9229d1c74253f187101d2be767f1327c2f832fa5f48726f11b54d",
+      "artifacts/risk_impact_calibration_stage3/uplift_observations_summary.csv": "ecf8e5ae4d0e34f56d2a0dc99774177d0b658c374cf99982b9d08a8b5b685555"
+    },
+    "stage3c": {
+      "artifacts/risk_impact_mapping_stage3c/demand_severity_mapping.csv": "f4c2f270c21446f3a89db0b63d164da3c2f90744bfb67c28aaa0e224255ac0f7",
+      "artifacts/risk_impact_mapping_stage3c/execution_audit.json": "c169a10a9770c5481b177dc6eaa02eee57cb51f1208851955b028791f5ebdaca",
+      "artifacts/risk_impact_mapping_stage3c/mapping_examples.json": "97ced4e2ee160407e18bf5d4ea470c586dd93d2d38baca99727123951937a37b",
+      "artifacts/risk_impact_mapping_stage3c/regional_emergency_mapping.csv": "e4f541f2dbd53d43a0ff87d26d09f09247137b14bf21975573ad7f3fc80fdb19",
+      "artifacts/risk_impact_mapping_stage3c/route_severity_mapping.csv": "714d4b222aa5b41b4104405a0e6642145f7e4b44f93c687e0928bef03d53f1b9"
+    },
+    "stage3d": {
+      "artifacts/route_risk_calibration_stage3d/evidence_table.csv": "3d870fc71fb2af80e70eb275cbb7529a00aa4b266c8063fca6d98444952dda5f",
+      "artifacts/route_risk_calibration_stage3d/execution_audit.json": "0a6d9667241fff216ed9b6505b73d1b0702d76231ad5563251b2f4c6c98b1d77",
+      "artifacts/route_risk_calibration_stage3d/regional_emergency_complete_mapping.csv": "0ce5cefd0b5a5b2de2f08bbe50096846c1542a9c2502aa63d854e502958938d6",
+      "artifacts/route_risk_calibration_stage3d/route_calibration_mapping.csv": "806d9a6998a69c34a253253b15a2550af85d6315747cb3ec6a2153ec3aa19517",
+      "artifacts/route_risk_calibration_stage3d/route_sensitivity_grid.csv": "ccc1069eb8baf5ca38320c0b4b4e9a00a61bfaaeedaadf4b111f4b3e7600efc8",
+      "artifacts/route_risk_calibration_stage3d/transport_disruption_mapping.csv": "5008eebbdcc938d3498a77225cdaa928d481a9faaa47116c1b7c106e53ee7ae8"
+    },
+    "stage4": {
+      "artifacts/m5_demand_calibration_stage4/baseline_model_comparison.csv": "2cdb190794928a7e11d6a5fa6cd822a5515eccffe71801f76474bfb674d2864a",
+      "artifacts/m5_demand_calibration_stage4/calibration_unit_decision.json": "a8c68fd3d507ee262608d220bba4670c399e1fe9fa77ccd411548a31e508d0a8",
+      "artifacts/m5_demand_calibration_stage4/data_availability_audit.json": "32de64c52440ecf91f63867992f54e3d267af950b29834b4f1080991459dacad",
+      "artifacts/m5_demand_calibration_stage4/data_availability_audit_blocked_initial.json": "53acab04d825e9b00d1b57999df3607b02df2ce899672b74a915b969a509a153",
+      "artifacts/m5_demand_calibration_stage4/data_restoration_audit.json": "b84ee134e2e3ea946064cfe97ec437ae55b1c7d9723f847f13ba944409f085f6",
+      "artifacts/m5_demand_calibration_stage4/empirical_quantiles.csv": "7218255a69f135f19eea72bc9f805c83d380df19d8214ff05a239b3a5d05dc3f",
+      "artifacts/m5_demand_calibration_stage4/event_proxy_definition.csv": "2d16a7775047fdfa6d0119f41c3d2ae977fefb7e08aa0e9e6403305f00793aee",
+      "artifacts/m5_demand_calibration_stage4/execution_audit.json": "d9bebe418dd24eabd9c93115974bc82bb76e54aa4f9496609af8e6b885809957",
+      "artifacts/m5_demand_calibration_stage4/favorita_vs_m5_quantile_comparison.csv": "919c1063bf87c76e9dbbcf75262a7300e246852dcb45f8e68a3e80ed010bf6b5",
+      "artifacts/m5_demand_calibration_stage4/gate_results.json": "9b0a7144eea276030551655c71faabc55c132bdbb55ade00236189edb151ff0a",
+      "artifacts/m5_demand_calibration_stage4/heldout_coverage.csv": "cf14157e6615e77e56b7afd75db8afe6de76f04f02f8a415ff6109feb12ac5be",
+      "artifacts/m5_demand_calibration_stage4/heterogeneity_diagnostic.csv": "0f4efa1924bc2dcbdcc7beb76856b1b0f6555f31ac7c665a880596938a4439f3",
+      "artifacts/m5_demand_calibration_stage4/m5_schema_audit.csv": "23d74887a5702ea5aee5d3235d666cee8866e1740b066932e5c99bc840d36ccc",
+      "artifacts/m5_demand_calibration_stage4/m5_schema_audit_blocked_initial.csv": "f61446dd84f6e4325a9ef94d1f223bcf00ad08529b2d83d630797bf9a7f5db37",
+      "artifacts/m5_demand_calibration_stage4/ml_necessity_gate.json": "c895f76a17a09135ac17515dfa3f4c28367929995959dc8ae273b5340ad1e9c7",
+      "artifacts/m5_demand_calibration_stage4/quantile_bootstrap_ci.csv": "27327c3849c8147639228e6d399ecf72f868aeb6cc8bfc927ae084a57d841ee4",
+      "artifacts/m5_demand_calibration_stage4/temporal_split.json": "765e8a9cf62615650600ac448f57dc0f95d5e0f3ec127b277b9be69b92a8eadd",
+      "artifacts/m5_demand_calibration_stage4/uplift_observations_summary.csv": "d0265bfb43de76718e594c01e327411d6b7a47a52de81ec1974e75911c9edbe9"
+    }
+  },
+  "protected_hashes_after": {
+    "stage1": {
+      "artifacts/compound_risk_stage1/base_state.json": "cc0eea70ef8857288cd16f92b83232499f96a6135967a052c7448628f6600d49",
+      "artifacts/compound_risk_stage1/event_catalog.json": "d0b696214039dbb1e7f80726eba96cab03c8a52f312aecf26bc280dfc548e9b0",
+      "artifacts/compound_risk_stage1/execution_audit.json": "d5315d7b7277c539fbd0cba8ebc80afb535b9d822546d1079cbb6bc28deeeb44",
+      "artifacts/compound_risk_stage1/gate_results.json": "dfa2164e2bbeb76c1e1e5cfa5c5f05ba466e143b655a38af233b2b3f9ff40ddd",
+      "artifacts/compound_risk_stage1/inventory_solutions.csv": "55f64b3b2bef7cdb6c8753edf1004d32b0e5ccd4054dd660f4fc09cdd4f43fbb",
+      "artifacts/compound_risk_stage1/regime_summary.csv": "fcc5e511946550fada02d79c228c5435528d00069353a92a173ec013225a7abc",
+      "artifacts/compound_risk_stage1/scenario_catalog.csv": "cab07a5e4476b4fc6cde685e6d8add58f7532136f23889ff8eefa6d8678b8470",
+      "artifacts/compound_risk_stage1/scenario_results.csv": "8d8cde4d9f01000073765c2c37dc7c9867bae65bc7b409d4ba813f53dabdabc4",
+      "artifacts/compound_risk_stage1/sensitivity_summary.csv": "3d06e920221c2505d7419cc1899b139e3ecaff90de54b567fa6ffec7ff338863"
+    },
+    "stage2": {
+      "artifacts/compound_risk_stage2/stage1_equivalence_audit.json": "fe68a75498f3e7442980079eda6f6a3ca240f7b3ad013abc547b8ea1cc301f08"
+    },
+    "stage3a": {
+      "artifacts/risk_impact_calibration_stage3/baseline_model_comparison.csv": "540f58a200391c48c4174e1582cc10b101f9f0e137a2749bafe3047bc376fb93",
+      "artifacts/risk_impact_calibration_stage3/calibration_candidates.csv": "4308c195203a433aab43e030be3bb96408a7450f7f13c008214f76f402e8d56d",
+      "artifacts/risk_impact_calibration_stage3/conditional_ml_results.csv": "219056a9b69233432cc7c543309d0f8de27fd2a34a018b4962ba78d1ed02295d",
+      "artifacts/risk_impact_calibration_stage3/empirical_quantiles.csv": "cb495a4e3d274973c79d96c1fa39eacdba04eb9e689e8fa11a4490288d3411d5",
+      "artifacts/risk_impact_calibration_stage3/execution_audit.json": "31159a3b8751fe9764a2826700b63fd8172a9408304b4b25bcc7c1da436b941f",
+      "artifacts/risk_impact_calibration_stage3/heldout_coverage.csv": "e9d37145dc5ed29c3682aba57a9571ebf01bd863bc38f8250eb4bf92a32cf817",
+      "artifacts/risk_impact_calibration_stage3/heterogeneity_diagnostic.csv": "afd97d8c05a7751b2cd8f690ab93114cc2df3f70137f3fb04b5854480d7ff525",
+      "artifacts/risk_impact_calibration_stage3/ml_necessity_gate.json": "9c015ea4a02d7c60e4f5defea1a838d99376eb456ec2aa38f20e31a5c751ce56",
+      "artifacts/risk_impact_calibration_stage3/provenance_matrix.csv": "8f410825c0dcdbd8e29c487c9de6cfb0083e9903007ae905dfdc058c9c468012",
+      "artifacts/risk_impact_calibration_stage3/quantile_bootstrap_ci.csv": "b14deae31af9229d1c74253f187101d2be767f1327c2f832fa5f48726f11b54d",
+      "artifacts/risk_impact_calibration_stage3/uplift_observations_summary.csv": "ecf8e5ae4d0e34f56d2a0dc99774177d0b658c374cf99982b9d08a8b5b685555"
+    },
+    "stage3c": {
+      "artifacts/risk_impact_mapping_stage3c/demand_severity_mapping.csv": "f4c2f270c21446f3a89db0b63d164da3c2f90744bfb67c28aaa0e224255ac0f7",
+      "artifacts/risk_impact_mapping_stage3c/execution_audit.json": "c169a10a9770c5481b177dc6eaa02eee57cb51f1208851955b028791f5ebdaca",
+      "artifacts/risk_impact_mapping_stage3c/mapping_examples.json": "97ced4e2ee160407e18bf5d4ea470c586dd93d2d38baca99727123951937a37b",
+      "artifacts/risk_impact_mapping_stage3c/regional_emergency_mapping.csv": "e4f541f2dbd53d43a0ff87d26d09f09247137b14bf21975573ad7f3fc80fdb19",
+      "artifacts/risk_impact_mapping_stage3c/route_severity_mapping.csv": "714d4b222aa5b41b4104405a0e6642145f7e4b44f93c687e0928bef03d53f1b9"
+    },
+    "stage3d": {
+      "artifacts/route_risk_calibration_stage3d/evidence_table.csv": "3d870fc71fb2af80e70eb275cbb7529a00aa4b266c8063fca6d98444952dda5f",
+      "artifacts/route_risk_calibration_stage3d/execution_audit.json": "0a6d9667241fff216ed9b6505b73d1b0702d76231ad5563251b2f4c6c98b1d77",
+      "artifacts/route_risk_calibration_stage3d/regional_emergency_complete_mapping.csv": "0ce5cefd0b5a5b2de2f08bbe50096846c1542a9c2502aa63d854e502958938d6",
+      "artifacts/route_risk_calibration_stage3d/route_calibration_mapping.csv": "806d9a6998a69c34a253253b15a2550af85d6315747cb3ec6a2153ec3aa19517",
+      "artifacts/route_risk_calibration_stage3d/route_sensitivity_grid.csv": "ccc1069eb8baf5ca38320c0b4b4e9a00a61bfaaeedaadf4b111f4b3e7600efc8",
+      "artifacts/route_risk_calibration_stage3d/transport_disruption_mapping.csv": "5008eebbdcc938d3498a77225cdaa928d481a9faaa47116c1b7c106e53ee7ae8"
+    },
+    "stage4": {
+      "artifacts/m5_demand_calibration_stage4/baseline_model_comparison.csv": "2cdb190794928a7e11d6a5fa6cd822a5515eccffe71801f76474bfb674d2864a",
+      "artifacts/m5_demand_calibration_stage4/calibration_unit_decision.json": "a8c68fd3d507ee262608d220bba4670c399e1fe9fa77ccd411548a31e508d0a8",
+      "artifacts/m5_demand_calibration_stage4/data_availability_audit.json": "32de64c52440ecf91f63867992f54e3d267af950b29834b4f1080991459dacad",
+      "artifacts/m5_demand_calibration_stage4/data_availability_audit_blocked_initial.json": "53acab04d825e9b00d1b57999df3607b02df2ce899672b74a915b969a509a153",
+      "artifacts/m5_demand_calibration_stage4/data_restoration_audit.json": "b84ee134e2e3ea946064cfe97ec437ae55b1c7d9723f847f13ba944409f085f6",
+      "artifacts/m5_demand_calibration_stage4/empirical_quantiles.csv": "7218255a69f135f19eea72bc9f805c83d380df19d8214ff05a239b3a5d05dc3f",
+      "artifacts/m5_demand_calibration_stage4/event_proxy_definition.csv": "2d16a7775047fdfa6d0119f41c3d2ae977fefb7e08aa0e9e6403305f00793aee",
+      "artifacts/m5_demand_calibration_stage4/execution_audit.json": "d9bebe418dd24eabd9c93115974bc82bb76e54aa4f9496609af8e6b885809957",
+      "artifacts/m5_demand_calibration_stage4/favorita_vs_m5_quantile_comparison.csv": "919c1063bf87c76e9dbbcf75262a7300e246852dcb45f8e68a3e80ed010bf6b5",
+      "artifacts/m5_demand_calibration_stage4/gate_results.json": "9b0a7144eea276030551655c71faabc55c132bdbb55ade00236189edb151ff0a",
+      "artifacts/m5_demand_calibration_stage4/heldout_coverage.csv": "cf14157e6615e77e56b7afd75db8afe6de76f04f02f8a415ff6109feb12ac5be",
+      "artifacts/m5_demand_calibration_stage4/heterogeneity_diagnostic.csv": "0f4efa1924bc2dcbdcc7beb76856b1b0f6555f31ac7c665a880596938a4439f3",
+      "artifacts/m5_demand_calibration_stage4/m5_schema_audit.csv": "23d74887a5702ea5aee5d3235d666cee8866e1740b066932e5c99bc840d36ccc",
+      "artifacts/m5_demand_calibration_stage4/m5_schema_audit_blocked_initial.csv": "f61446dd84f6e4325a9ef94d1f223bcf00ad08529b2d83d630797bf9a7f5db37",
+      "artifacts/m5_demand_calibration_stage4/ml_necessity_gate.json": "c895f76a17a09135ac17515dfa3f4c28367929995959dc8ae273b5340ad1e9c7",
+      "artifacts/m5_demand_calibration_stage4/quantile_bootstrap_ci.csv": "27327c3849c8147639228e6d399ecf72f868aeb6cc8bfc927ae084a57d841ee4",
+      "artifacts/m5_demand_calibration_stage4/temporal_split.json": "765e8a9cf62615650600ac448f57dc0f95d5e0f3ec127b277b9be69b92a8eadd",
+      "artifacts/m5_demand_calibration_stage4/uplift_observations_summary.csv": "d0265bfb43de76718e594c01e327411d6b7a47a52de81ec1974e75911c9edbe9"
+    }
+  },
+  "selected_calibration_unit": "store x department x week",
+  "selected_baseline": "B1_LAG_1",
+  "primary_item_discount_threshold": 0.1,
+  "primary_department_share_threshold": 0.1,
+  "minimum_valid_priced_items": 10,
+  "test_used_for_proxy_selection": false,
+  "test_result_status": "POST_STAGE4_DIAGNOSTIC_HELDOUT_CHECK",
+  "optimizer_dispatches": 0,
+  "genai_dispatches": 0,
+  "ml_training_dispatches": 0,
+  "paper2_frozen_sha_before": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "paper2_frozen_sha_after": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "paper2_clean_before": true,
+  "paper2_clean_after": true
+}

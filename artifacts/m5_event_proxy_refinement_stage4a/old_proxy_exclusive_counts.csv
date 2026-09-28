@@ -1,0 +1,6 @@
+proxy_name,sample_count,exclusive_against_all_listed,atomic_exclusive_count,calendar_promotion_intersection_count,calendar_snap_intersection_count,promotion_snap_intersection_count,calendar_promotion_snap_intersection_count
+M5_CALENDAR_EVENT,4080,0,0.0,4080,2210,4032,2210
+M5_SNAP_CONTEXT,4032,0,0.0,4080,2210,4032,2210
+M5_PROMOTION_LIKE,8961,0,3059.0,4080,2210,4032,2210
+M5_EVENT_PROMOTION_OVERLAP,4080,0,,4080,2210,4032,2210
+M5_GENERIC_EVENT_PROXY,8961,0,,4080,2210,4032,2210

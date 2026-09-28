@@ -1,0 +1,10 @@
+item_discount_threshold,department_share_threshold,minimum_valid_priced_items,train_validation_department_week_count,eligible_price_history_department_week_count,promotion_department_week_count,promotion_department_week_rate,is_preregistered_primary_rule,test_used_for_rule_selection
+0.05,0.05,10,17850,17010,1250,0.0700280112044818,False,False
+0.05,0.1,10,17850,17010,191,0.010700280112044817,False,False
+0.05,0.2,10,17850,17010,25,0.0014005602240896359,False,False
+0.1,0.05,10,17850,17010,572,0.03204481792717087,False,False
+0.1,0.1,10,17850,17010,101,0.005658263305322129,True,False
+0.1,0.2,10,17850,17010,9,0.0005042016806722689,False,False
+0.15,0.05,10,17850,17010,199,0.0111484593837535,False,False
+0.15,0.1,10,17850,17010,51,0.002857142857142857,False,False
+0.15,0.2,10,17850,17010,8,0.0004481792717086835,False,False

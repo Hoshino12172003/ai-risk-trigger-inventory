@@ -1,0 +1,2 @@
+rule,audit_scope,priced_item_week_count,labeled_item_week_count,labeled_item_week_percentage,store_item_count,labeled_fraction_p25,labeled_fraction_p50,labeled_fraction_p75,labeled_fraction_p90,store_items_over_80pct_labeled,store_items_all_nonmax_weeks_labeled,promotion_field_status
+sell_price < store-item TRAIN maximum price,TRAIN+VALIDATION priced item-weeks,6018884,2357505,0.39168473756929023,30466,0.0,0.20958179268137195,0.6758730400034748,0.8980392156862745,4555,18124,DERIVED_PROXY_NOT_AN_OFFICIAL_M5_PROMOTION_FIELD

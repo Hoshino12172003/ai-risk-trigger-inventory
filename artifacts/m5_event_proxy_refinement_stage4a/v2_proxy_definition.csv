@@ -1,0 +1,6 @@
+proxy_name,source_fields,construction_rule,direct_or_derived,economic_interpretation,provenance,sample_count
+M5_CALENDAR_EVENT_V2,"event_name_1,event_type_1,event_name_2,event_type_2",same frozen weekly calendar-event definition as Stage 4,DIRECT_CONTEXT,calendar-based external demand context,CALENDAR_OBSERVED_CONTEXT,4080
+M5_PRICE_PROMOTION_EVENT_V2,"sell_price,store_id,item_id,dept_id,wm_yr_wk",shift(1) 12-available-week median; item discount >=10%; department promoted share >=10%; valid items >=10,DERIVED,price-based promotion-like demand context,PRICE_DERIVED_PROMOTION_PROXY,50
+M5_SNAP_CONTEXT_V2,"snap_CA,snap_TX,snap_WI,state_id",same frozen state-specific majority-week SNAP definition as Stage 4,DIRECT_CONTEXT,state-level SNAP context; not promotion or holiday,SNAP_OBSERVED_CONTEXT,4032
+M5_CALENDAR_PRICE_OVERLAP_V2,"calendar fields,sell_price",calendar event AND V2 price-promotion event,DERIVED,calendar and price-promotion context overlap,DERIVED_CONTEXT_OVERLAP,31
+M5_GENERIC_DEMAND_STIMULATION_V2,"calendar fields,sell_price,SNAP fields",calendar OR V2 price promotion OR SNAP,DERIVED,broader external demand-stimulation context,GENERIC_DERIVED_DEMAND_STIMULATION,5918

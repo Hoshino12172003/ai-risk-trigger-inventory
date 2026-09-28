@@ -1,0 +1,28 @@
+{
+  "status": "STAGE_4A_PROXY_REFINEMENT_PASS",
+  "stage4_status_preserved": "STAGE_4_DEMAND_CALIBRATION_VALIDATION_PASS",
+  "cross_domain_calibration_status_preserved": "SUPPORTED",
+  "old_promotion_proxy_status": "OVERBROAD_LEGACY_PROXY",
+  "new_price_promotion_proxy_status": "DISTINGUISHABLE_DERIVED_PROXY",
+  "promotion_proxy_saturation": true,
+  "gate_proxy_distinguishability": true,
+  "frozen_gate_thresholds": {
+    "saturation_conditional_threshold": 0.95,
+    "near_equal_count_tolerance": 0.01,
+    "pairwise_distinguishability_jaccard": 0.95,
+    "minimum_saturation_reduction": 0.1
+  },
+  "old_conditionals": {
+    "P(PROMOTION_LIKE|CALENDAR_EVENT)": 1.0,
+    "P(PROMOTION_LIKE|SNAP_CONTEXT)": 1.0,
+    "P(PROMOTION_LIKE|GENERIC_EVENT_PROXY)": 1.0
+  },
+  "v2_conditionals": {
+    "P(PRICE_PROMOTION_V2|CALENDAR)": 0.007598039215686274,
+    "P(PRICE_PROMOTION_V2|SNAP)": 0.006448412698412698,
+    "P(PRICE_PROMOTION_V2|GENERIC_DEMAND_STIMULATION_V2)": 0.00844880027036161
+  },
+  "old_max_saturation_conditional": 1.0,
+  "v2_max_saturation_conditional": 0.00844880027036161,
+  "saturation_reduction": 0.9915511997296383
+}
