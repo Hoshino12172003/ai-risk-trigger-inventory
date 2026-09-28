@@ -1,0 +1,8 @@
+{
+  "supplement_batch_id": "STAGE5A_SUPPLEMENT_001",
+  "sources": {
+    "GDELT": "DOWNLOAD_FAILED",
+    "ReliefWeb": "AUTH_BLOCKED",
+    "DesInventar Ecuador": "DOWNLOAD_FAILED"
+  }
+}

@@ -1,0 +1,4 @@
+source,status,record_count,file_count,stored_bytes,actual_min_date,actual_max_date,supplement_batch_id,requested_start_date,requested_end_date,known_gaps
+GDELT,DOWNLOAD_FAILED,0,0,0,,,STAGE5A_SUPPLEMENT_001,2015-01-01T00:00:00Z,2026-08-31T23:59:59Z,bounded Event sample only; official GKG streaming failed after three bounded runs
+ReliefWeb,AUTH_BLOCKED,0,0,0,,,STAGE5A_SUPPLEMENT_001,2015-01-01T00:00:00Z,2026-08-31T23:59:59Z,provide a pre-approved appname through RELIEFWEB_APPNAME or RELIEFWEB_API_APPNAME
+DesInventar Ecuador,DOWNLOAD_FAILED,0,0,0,,,STAGE5A_SUPPLEMENT_001,2015-01-01T00:00:00Z,2026-08-31T23:59:59Z,
