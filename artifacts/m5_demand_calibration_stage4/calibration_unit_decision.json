@@ -1,0 +1,34 @@
+{
+  "decision_frozen_before_test_demand_read": true,
+  "selected_unit": "store x department x week",
+  "reason": "item-day is substantially sparse and very large; department-week is stable while preserving more detail than category-week",
+  "candidates": [
+    {
+      "candidate": "store x item x day",
+      "observations": 54424650,
+      "zero_demand_rate": 0.6888607827519332,
+      "positive_demand_rate": 0.3111392172480668,
+      "entity_count": 30490,
+      "baseline_usability": "causal baselines feasible but panel is highly sparse and computationally large",
+      "selected": false
+    },
+    {
+      "candidate": "store x department x week",
+      "observations": 17850,
+      "zero_demand_rate": 0.0,
+      "positive_demand_rate": 1.0,
+      "entity_count": 70,
+      "baseline_usability": "stable interpretable weekly panel with causal lag history",
+      "selected": true
+    },
+    {
+      "candidate": "store x category x week",
+      "observations": 7650,
+      "zero_demand_rate": 0.0,
+      "positive_demand_rate": 1.0,
+      "entity_count": 30,
+      "baseline_usability": "stable but coarser than necessary",
+      "selected": false
+    }
+  ]
+}

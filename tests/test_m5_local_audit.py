@@ -38,12 +38,15 @@ def test_m5_manifest_schema_and_provenance() -> None:
     assert "price" in manifest["field_provenance"]["OBSERVED"]
 
 
-def test_committed_missing_manifest_matches_builder() -> None:
+def test_committed_manifest_matches_recorded_availability() -> None:
     root = Path(__file__).resolve().parents[1]
     committed = json.loads(
         (root / "data/manifests/m5_local_manifest.json").read_text(
             encoding="utf-8"
         )
     )
+    data_dir = root / "data/local/m5"
+    if committed["status"] == "BLOCKED_MISSING_LOCAL_INPUT":
+        data_dir = root / "data/local/m5-test-missing"
 
-    assert committed == build_manifest(root / "data/local/m5")
+    assert committed == build_manifest(data_dir)

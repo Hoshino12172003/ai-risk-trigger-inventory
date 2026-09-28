@@ -1,0 +1,3 @@
+split,total_rows,eligible_rows,excluded_baseline_below_threshold_rows,positive_uplift_rows,zero_uplift_rows,negative_uplift_rows,minimum_positive_baseline_threshold,all_uplift_median
+TRAIN_VALIDATION,17850,17780,70,8961,62,8757,1.0,0.001394648091132406
+TEST,1400,1400,0,742,1,657,1.0,0.009616801465224145

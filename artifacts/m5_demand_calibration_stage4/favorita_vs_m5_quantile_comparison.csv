@@ -1,0 +1,4 @@
+proxy_concept,quantile_level,favorita_value,m5_value,absolute_difference,relative_difference,same_method,interpretation
+positive uplift under generic observed retail event/context proxy,0.75,0.2954545454545454,0.16279069767441862,0.1326638477801268,0.44901610017889076,True,same positive-uplift empirical-quantile method; domain-specific parameter values; equality not required
+positive uplift under generic observed retail event/context proxy,0.9,0.7333333333333333,0.2889132821075741,0.44442005122575917,0.6060273425805808,True,same positive-uplift empirical-quantile method; domain-specific parameter values; equality not required
+positive uplift under generic observed retail event/context proxy,0.95,1.3529411764705883,0.3942307692307692,0.9587104072398192,0.7086120401337793,True,same positive-uplift empirical-quantile method; domain-specific parameter values; equality not required

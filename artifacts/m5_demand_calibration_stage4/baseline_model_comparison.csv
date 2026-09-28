@@ -1,0 +1,5 @@
+baseline_id,description,selection_rank,validation_n,MAE,RMSE,MedianAE,test_rows_used_for_selection,leakage_check,selected
+B1_LAG_1,previous complete week,0,3570,344.68151260504203,654.5650688906068,143.0,0,PAST_ONLY,True
+B2_MEAN_12,mean of 12 complete prior weeks after shift(1),1,3570,345.2290149393091,627.9132904601745,153.75,0,PAST_ONLY,False
+B3_MEDIAN_12,median of 12 complete prior weeks after shift(1),2,3570,351.8417366946779,648.2898822506576,153.25,0,PAST_ONLY,False
+B4_LAG_52,same M5 retail week in prior year,3,3570,553.5728291316526,923.1079686844544,318.0,0,PAST_ONLY,False

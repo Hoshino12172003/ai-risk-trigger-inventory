@@ -1,0 +1,35 @@
+{
+  "status": "STAGE_4_DEMAND_CALIBRATION_VALIDATION_PASS",
+  "gates": [
+    {
+      "gate": "GATE_1_DATA_INTEGRITY",
+      "pass": true,
+      "evidence": "four critical files present, readable, schema/key/date audited"
+    },
+    {
+      "gate": "GATE_2_NO_LEAKAGE",
+      "pass": true,
+      "evidence": "{\"centered_rolling_used\": false, \"passed\": true, \"rolling_shifted_before_window\": true, \"rolling_value_mismatches\": 0, \"test_used_for_selection\": false}"
+    },
+    {
+      "gate": "GATE_3_BASELINE_VALIDITY",
+      "pass": true,
+      "evidence": "validation-selected baseline MAE no worse than lag-1 naive"
+    },
+    {
+      "gate": "GATE_4_QUANTILE_IDENTIFIABILITY",
+      "pass": true,
+      "evidence": "q75 <= q90 <= q95 and primary sample >= frozen minimum"
+    },
+    {
+      "gate": "GATE_5_HELDOUT_CALIBRATION",
+      "pass": true,
+      "evidence": "all primary absolute coverage errors <= 0.05"
+    },
+    {
+      "gate": "GATE_6_METHOD_TRANSFERABILITY",
+      "pass": true,
+      "evidence": "independent M5 baseline-to-uplift-to-quantile-to-heldout chain completed"
+    }
+  ]
+}

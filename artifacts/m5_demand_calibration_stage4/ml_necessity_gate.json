@@ -1,0 +1,20 @@
+{
+  "classification": "SIMPLE_CALIBRATION_RETAINED",
+  "ml_needed": false,
+  "heterogeneity_material": false,
+  "heterogeneity_conditions": {
+    "median_group_q90_absolute_error": false,
+    "fraction_groups_q90_error_over_0_10": false,
+    "group_q90_iqr": false
+  },
+  "heterogeneity_thresholds": {
+    "median_group_q90_absolute_error": 0.05,
+    "fraction_groups_q90_error_over_0_10": 0.25,
+    "group_q90_iqr": 0.2
+  },
+  "simple_systematic_miscalibration": false,
+  "simple_miscalibration_rule": "at least two of q75/q90/q95 absolute coverage errors exceed 0.05",
+  "ml_training_dispatches": 0,
+  "conditional_ml_results_file": null,
+  "negative_improvement_note": "negative ML improvement means ML error is larger; it does not determine under- versus over-coverage"
+}

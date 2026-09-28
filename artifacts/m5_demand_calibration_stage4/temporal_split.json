@@ -1,0 +1,27 @@
+{
+  "rule_frozen_before_test_demand_read": true,
+  "rule": "complete M5 retail weeks; TRAIN ends 2014-12-31; VALIDATION is within 2015; TEST starts 2016-01-01",
+  "splits": {
+    "TRAIN": {
+      "first_date": "2011-01-29",
+      "last_date": "2014-12-26",
+      "week_count": 204,
+      "entity_count": 70,
+      "panel_row_count": 14280
+    },
+    "VALIDATION": {
+      "first_date": "2015-01-03",
+      "last_date": "2015-12-25",
+      "week_count": 51,
+      "entity_count": 70,
+      "panel_row_count": 3570
+    },
+    "TEST": {
+      "first_date": "2016-01-02",
+      "last_date": "2016-05-20",
+      "week_count": 20,
+      "entity_count": 70,
+      "panel_row_count": 1400
+    }
+  }
+}
