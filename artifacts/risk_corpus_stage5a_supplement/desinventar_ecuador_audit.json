@@ -1,0 +1,19 @@
+{
+  "source": "DesInventar Ecuador",
+  "status": "DOWNLOAD_FAILED",
+  "supplement_batch_id": "STAGE5A_SUPPLEMENT_001",
+  "requested_start_date": "2015-01-01T00:00:00Z",
+  "requested_end_date": "2026-08-31T23:59:59Z",
+  "actual_min_date": null,
+  "actual_max_date": null,
+  "attempt_count": 2,
+  "download_success": false,
+  "filename": null,
+  "sha256": null,
+  "size_bytes": 0,
+  "total_source_records": 0,
+  "in_window_records": 0,
+  "disaster_type_counts": {},
+  "province_admin_counts": {},
+  "retrieval_timestamp": "2026-09-28T14:25:09+00:00"
+}

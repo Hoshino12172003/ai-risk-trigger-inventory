@@ -1,0 +1,12 @@
+{
+  "requested_start_date": "2015-01-01T00:00:00Z",
+  "requested_end_date": "2026-08-31T23:59:59Z",
+  "sources": {
+    "GDELT": "API_LIMITATION",
+    "ReliefWeb": "AUTH_BLOCKED",
+    "GDACS": "PARTIAL_SOURCE_COVERAGE",
+    "DesInventar": "PARTIAL_SOURCE_COVERAGE",
+    "USGS": "COMPLETE_FOR_REQUESTED_SCOPE",
+    "Copernicus EMS": "COMPLETE_FOR_REQUESTED_SCOPE"
+  }
+}

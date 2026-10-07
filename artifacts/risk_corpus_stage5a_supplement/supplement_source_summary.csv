@@ -1,0 +1,4 @@
+source,status,record_count,file_count,stored_bytes,actual_min_date,actual_max_date,supplement_batch_id
+GDELT,DOWNLOAD_FAILED,0,0,0,,,STAGE5A_SUPPLEMENT_001
+ReliefWeb,AUTH_BLOCKED,0,0,0,,,STAGE5A_SUPPLEMENT_001
+DesInventar Ecuador,DOWNLOAD_FAILED,0,0,0,,,STAGE5A_SUPPLEMENT_001

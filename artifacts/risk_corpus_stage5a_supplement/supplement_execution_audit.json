@@ -1,0 +1,33 @@
+{
+  "status": "STAGE_5A_SUPPLEMENT_BLOCKED",
+  "supplement_batch_id": "STAGE5A_SUPPLEMENT_001",
+  "baseline_commit": "ead6d5ae02502382d63402959a8120dbbfe54fc6",
+  "retrieval_timestamp": "2026-09-28T14:44:47+00:00",
+  "baseline_raw_before": {
+    "checked_file_count": 108,
+    "mismatches": [],
+    "unchanged": true
+  },
+  "baseline_raw_after": {
+    "checked_file_count": 108,
+    "mismatches": [],
+    "unchanged": true
+  },
+  "baseline_stage5a_artifacts_changed": [],
+  "stage1_through_stage4a_artifacts_changed": [],
+  "paper2_expected_sha": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "paper2_actual_sha": "51aebd06edf8f5d6d124d0f3eebdbb901e63274f",
+  "paper2_worktree_clean": true,
+  "source_fusion_performed": false,
+  "canonical_events_created": false,
+  "missing_value_imputation_performed": false,
+  "genai_dispatches": 0,
+  "llm_extractions": 0,
+  "ml_training_dispatches": 0,
+  "optimizer_dispatches": 0,
+  "delta_d_recalibrated": false,
+  "delta_a_recalibrated": false,
+  "combined_total_records": 18065,
+  "combined_total_raw_files": 108,
+  "combined_total_bytes": 40247350
+}

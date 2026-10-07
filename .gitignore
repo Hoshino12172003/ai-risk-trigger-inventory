@@ -2,9 +2,26 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+pytest-of-*/
+pip-build-env-*/
+pip-metadata-*/
+pip-modern-metadata-*/
+pip-unpack-*/
+*.egg-info/
+.idea/
 data/raw/
 data/interim/
 data/processed/
 data/local/
+# Stage 5A raw public-source corpus (manifests are summarized under artifacts/).
+data/local/raw_risk_corpus/
 artifacts/formal/*
 !artifacts/formal/.gitkeep
+
+# Machine-local inventories and exploratory result tables. Reproducible scripts
+# and compact aggregate audits remain tracked.
+artifacts/data_layout_audit_safe_migration/
+mediacloud_ecuador_audit/
+mediacloud_ecuador_flash_v2/
+mediacloud_ecuador_flash_v3/
+mediacloud_ecuador_shock_flash_search/

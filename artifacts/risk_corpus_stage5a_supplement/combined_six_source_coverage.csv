@@ -1,0 +1,7 @@
+source,status,raw_record_count,actual_min_date,actual_max_date,countries,raw_file_count,bytes,known_gaps,authorization_limitations,source_native_limitations
+GDELT,DOWNLOAD_FAILED,0,,,Ecuador|Colombia|Peru,0,0,bounded Event sample only; official GKG streaming failed after three bounded runs; SOURCE_NATIVE_START_DATE_GAP,,2015-01-01 through 2015-02-18
+ReliefWeb,AUTH_BLOCKED,0,,,Ecuador|Colombia|Peru,0,0,provide a pre-approved appname through RELIEFWEB_APPNAME or RELIEFWEB_API_APPNAME,provide a pre-approved appname through RELIEFWEB_APPNAME or RELIEFWEB_API_APPNAME,
+GDACS,PARTIAL_SOURCE_COVERAGE,2270,2015-01-11T21:39:37,2026-08-31T11:53:26,Ecuador|Colombia|Peru,81,12938596,see accepted Stage-5A source coverage audit,,
+DesInventar,PARTIAL_SOURCE_COVERAGE,10108,2015-01-01,2018-02-23,Ecuador|Colombia|Peru,2,21676604,source-native country exports do not cover the requested end date,,
+USGS,COMPLETE_FOR_REQUESTED_SCOPE,5676,2015-01-01T14:50:16.810000+00:00,2026-08-31T14:07:43.745000+00:00,Ecuador|Colombia|Peru,12,4016169,see accepted Stage-5A source coverage audit,,
+Copernicus EMS,COMPLETE_FOR_REQUESTED_SCOPE,11,2016-04-17T14:30:00,2026-08-10T17:13:00,Ecuador|Colombia|Peru,13,1615981,see accepted Stage-5A source coverage audit,,
